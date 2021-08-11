@@ -14,6 +14,7 @@ public class Main {
             int floor = (new Scanner(System.in)).nextInt();
             elevator.move(floor);
             elevator.getCurrentFloor();
+
         }
     }
 }

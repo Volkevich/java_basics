@@ -11,32 +11,29 @@ public class Elevator {
     }
 
     public int getCurrentFloor() {
-        System.out.println("Текущий этаж: " + this.currentFloor);
-        return this.currentFloor;
+        System.out.println("Текущий этаж: " + currentFloor);
+        return currentFloor;
     }
 
-    public void moveDown() {
-        this.currentFloor = this.currentFloor > this.maxFloor ? this.currentFloor - 1 : this.currentFloor;
+    private void moveDown() {
+        currentFloor = currentFloor < maxFloor ? currentFloor - 1 : currentFloor;
     }
 
-    public void moveUp() {
-        this.currentFloor = this.currentFloor < this.minFloor ? this.currentFloor + 1 : this.currentFloor;
+    private void moveUp() {
+        currentFloor = currentFloor > minFloor ? currentFloor + 1 : currentFloor;
     }
 
     public void move(int floor) {
         if (floor > this.maxFloor || floor < this.minFloor) {
             System.out.println("Такого этажа не сужествует!");
+
         }
 
-        while(floor != this.currentFloor) {
-            if (this.currentFloor < floor) {
-                this.moveUp();
-            }
+        for (; this.currentFloor < floor; moveUp()) {
+            getCurrentFloor();
         }
-
-        if (this.currentFloor > floor) {
-            this.moveDown();
+        for (; currentFloor > floor; moveDown()) {
+            getCurrentFloor();
         }
-
     }
 }
