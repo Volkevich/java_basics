@@ -16,11 +16,11 @@ public class Elevator {
     }
 
     private void moveDown() {
-        currentFloor = currentFloor < maxFloor ? currentFloor - 1 : currentFloor;
+        currentFloor = currentFloor <= maxFloor ? currentFloor - 1 : currentFloor;
     }
 
     private void moveUp() {
-        currentFloor = currentFloor > minFloor ? currentFloor + 1 : currentFloor;
+        currentFloor = currentFloor >= minFloor ? currentFloor + 1 : currentFloor;
     }
 
     public void move(int floor) {
