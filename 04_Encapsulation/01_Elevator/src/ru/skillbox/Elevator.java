@@ -26,7 +26,7 @@ public class Elevator {
     public void move(int floor) {
         if (floor > this.maxFloor || floor < this.minFloor) {
             System.out.println("Такого этажа не сужествует!");
-
+        return;
         }
 
         for (; this.currentFloor < floor; moveUp()) {
