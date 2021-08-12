@@ -12,8 +12,9 @@ public class Main {
         while(true) {
             System.out.print("Введите номер этажа: ");
             int floor = (new Scanner(System.in)).nextInt();
-            elevator.move(floor);
+            elevator.move(floor );
             elevator.getCurrentFloor();
+
 
         }
     }

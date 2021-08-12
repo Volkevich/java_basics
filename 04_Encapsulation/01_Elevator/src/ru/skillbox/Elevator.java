@@ -2,8 +2,8 @@ package ru.skillbox;
 
 public class Elevator {
     private int currentFloor = 1;
-    private int minFloor = -3;
-    private int maxFloor = 26;
+    private int minFloor;
+    private int maxFloor;
 
     public Elevator(int minFloor, int maxFloor) {
         this.minFloor = minFloor;
@@ -16,24 +16,26 @@ public class Elevator {
     }
 
     private void moveDown() {
-        currentFloor = currentFloor <= maxFloor ? currentFloor - 1 : currentFloor;
+        currentFloor = currentFloor - 1;
     }
 
     private void moveUp() {
-        currentFloor = currentFloor >= minFloor ? currentFloor + 1 : currentFloor;
+        currentFloor = currentFloor + 1;
     }
 
     public void move(int floor) {
         if (floor > this.maxFloor || floor < this.minFloor) {
             System.out.println("Такого этажа не сужествует!");
-        return;
+            return;
         }
 
         for (; this.currentFloor < floor; moveUp()) {
-            getCurrentFloor();
+            System.out.println(currentFloor);
         }
         for (; currentFloor > floor; moveDown()) {
-            getCurrentFloor();
+            System.out.println(currentFloor);
+
         }
+
     }
 }
