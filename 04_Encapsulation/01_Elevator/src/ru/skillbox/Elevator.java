@@ -29,12 +29,12 @@ public class Elevator {
             return;
         }
 
-        for (; this.currentFloor < floor; moveUp()) {
-            System.out.println(currentFloor);
-        }
-        for (; currentFloor > floor; moveDown()) {
-            System.out.println(currentFloor);
-
+       while (floor != currentFloor) {
+            getCurrentFloor();
+            if (currentFloor < floor)
+                moveUp();
+            else
+                moveDown();
         }
 
     }
