@@ -8,10 +8,16 @@ public class Product {
     }
     private final int barCode;
     private final String name;
-    private int prise;
+    private int price;
 
-    public int getPrise(int prise) {
-        return prise;
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+
+
+    public int getPrice() {
+        return price;
     }
 
     public String getName() {
