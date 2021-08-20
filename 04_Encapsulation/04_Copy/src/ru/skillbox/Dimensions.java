@@ -1,31 +1,31 @@
 package ru.skillbox;
 
-public class Dimensions {
-    private final int isLong;
-    private final int width ;
-    private final int height;
+public final class Dimensions {
+    private int length;
+    private int width ;
+    private int height;
 
-    public Dimensions(int height, int width, int isLong) {
+    public Dimensions(int height, int width, int length) {
         this.height = height;
         this.width = width;
-        this.isLong = isLong;
+        this.length = length;
     }
 
-    public Dimensions setIsLong(int isLong) {
-        return new Dimensions(height,width,isLong);
+    public Dimensions setlength(int length) {
+        return new Dimensions(length, this.width, this.height);
     }
 
     public Dimensions setWidth(int width) {
-        return new Dimensions(height,width,isLong);
+        return new Dimensions(width, this.height , this.length);
     }
 
     public Dimensions setHeight(int height) {
-        return new Dimensions(height,width,isLong);
+        return new Dimensions(this.length, this.width, height);
     }
 
 
-    public int getIsLong() {
-        return isLong;
+    public int getlength() {
+        return length;
     }
 
     public int getWidth() {
@@ -36,6 +36,6 @@ public class Dimensions {
         return height;
     }
     public int volume(){
-        return this.isLong * width * height;
+        return length * width * height;
     }
 }
