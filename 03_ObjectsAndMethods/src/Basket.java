@@ -9,7 +9,7 @@ public class Basket {
 
 
     public Basket() {
-        increaseCount(1);
+        increaseCount(1,2);
         items = "Список товаров:";
         this.limit = 1000000;
 
@@ -23,18 +23,19 @@ public class Basket {
         this.limit = limit;
     }
 
-    public Basket(String items, int totalPrice) {
+    public Basket(String items) {
         this();
         Basket.items = Basket.items + items;
-        Basket.totalPrice = totalPrice;
+
     }
 
     public static int getCount() {
         return count;
     }
 
-    public static void increaseCount(int count) {
+    public void increaseCount(int count, int price) {
         Basket.count = Basket.count + count;
+        totalPrice = totalPrice + count * price;
     }
     public static int getTotalCount() {
         return Basket.totalCount;
@@ -51,7 +52,7 @@ public class Basket {
             error = true;
         }
 
-        if (Basket.totalPrice + count * price >= limit) {
+        if (totalPrice + count * price >= limit) {
             error = true;
         }
 
@@ -61,7 +62,7 @@ public class Basket {
         }
 
         items = items + "\n" + name + " - " + price + " руб.";
-       Basket.totalPrice = Basket.totalPrice + count * price;
+        totalPrice = totalPrice + count * price;
 
     }
 

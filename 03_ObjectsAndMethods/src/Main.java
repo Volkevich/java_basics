@@ -2,7 +2,7 @@ public class Main {
 
     public static void main(String[] args) {
         Basket basketVasia = new Basket();
-        basketVasia.add("Milk", 10);
+        basketVasia.add("Milk", 10,22);
         basketVasia.print("Корзина Васи");
         System.out.println("//-----------------------------------//");
         Basket basketMax = new Basket();
