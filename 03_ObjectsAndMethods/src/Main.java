@@ -2,22 +2,31 @@ public class Main {
 
     public static void main(String[] args) {
         Basket basketVasia = new Basket();
-        basketVasia.add("Персик", 2, 20, 10);
-        Basket.clear();
+        basketVasia.add("Персик", 2, 20, 100);
         basketVasia.print("Корзина Васи: ");
-        System.out.println("//-----------------------------------//");
         Basket basketMax = new Basket();
-        basketMax.add("Apple", 10, 3, 20);
+        basketMax.add("Apple", 11, 3, 20);
         basketMax.add("Cucumber", 10, 3, 33);
         basketMax.add("Лимон", 2, 3, 30);
         basketMax.add("Персик", 10, 3, 30);
         basketMax.print("Корзина Макса - ");
-        System.out.println("=========================================================================");
-        System.out.println("Общая сумма товаров со всех корзин: " + Basket.getTotalAllPrice() + " руб.");
+        Basket basketOla = new Basket();
+        basketOla.add("Apple", 11, 3, 20);
+        basketOla.add("Cucumber", 10, 3, 33);
+        basketOla.add("Лимон", 2, 3, 30);
+        basketOla.add("Персик", 10, 3, 30);
+        basketOla.clear();
+        basketOla.print("Корзина Оли - ");
+        System.out.println("Общая стоимость товаров со всех корзин: " + Basket.getTotalAllPrice() + " руб.");
         System.out.println("Количество корзин: " + Basket.getCount());
-        System.out.println("Количество товаров: " + Basket.getTotalCount() + " шт.");
         System.out.println("Средняя цена: " + Basket.averagePrice() + " руб.");
         System.out.println("Средняя стоимость корзины: " + Basket.averageBasket() + " руб.");
+        System.out.println("Общее количество товаров: " + Basket.getTotalCount());
+
+
+
+
+
 
 
     }
