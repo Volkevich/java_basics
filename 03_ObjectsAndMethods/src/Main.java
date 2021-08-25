@@ -17,6 +17,11 @@ public class Main {
         basketOla.add("Персик", 10, 3, 30);
         basketOla.clear();
         basketOla.print("Корзина Оли - ");
+        Basket basketVasi1 = new Basket();
+        basketVasi1.add("Персик", 2, 20, 100);
+        Basket basketMaxx = new Basket();
+        basketMaxx.add("Apple", 11, 3, 20);
+        basketVasi1.print("Корзина - ");
         System.out.println("Общая стоимость товаров со всех корзин: " + Basket.getTotalAllPrice() + " руб.");
         System.out.println("Количество корзин: " + Basket.getCount());
         System.out.println("Средняя цена: " + Basket.averagePrice() + " руб.");
