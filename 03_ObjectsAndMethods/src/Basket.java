@@ -2,7 +2,10 @@ public class Basket {
 
     private static int count = 0;
     private static int totalCount = 0;
-    private static String items = " ";
+
+
+
+    private String items = " ";
     private int totalPrice = 0;
     private int limit;
     public double totalWeight = 0;
@@ -16,8 +19,6 @@ public class Basket {
         this.limit = 1000000;
         increasePrice(0);
         increaseProductCount(0);
-        Basket.items = Basket.items + items;
-
     }
 
 
@@ -63,7 +64,7 @@ public class Basket {
             return;
         }
 
-        items = items + "\n " + name + " ,стоимостью : " + price + " рубл. " + " в количестве - " + count + " шт. " + " весом - " + weight + " грамм\n" +
+        this.items = this.items + "\n " + name + " ,стоимостью : " + price + " рубл. " + " в количестве - " + count + " шт. " + " весом - " + weight + " грамм\n" +
                 "==============================================================================";
         totalWeight = totalWeight + weight;
         totalPrice = totalPrice + count * price;
@@ -72,8 +73,6 @@ public class Basket {
         productCount = productCount + count;
 
     }
-
-
 
 
     public double getTotalWeight()
@@ -120,7 +119,7 @@ public class Basket {
         }
     }
     public void clear() {
-        Basket.items = "";
+        items = "";
         totalAllPrice = totalAllPrice - totalPrice;
         totalCount = totalCount - productCount;
         totalPrice = 0;
