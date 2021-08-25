@@ -1,7 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        Basket basketVasia = new Basket();
+        Basket basketVasia = new Basket(5000);
         basketVasia.add("Персик", 2, 20, 100);
         basketVasia.print("Корзина Васи: ");
         Basket basketMax = new Basket();
