@@ -16,7 +16,7 @@ public class Basket {
         this.limit = 1000000;
         increasePrice(0);
         increaseProductCount(0);
-
+        Basket.items = Basket.items + items;
 
     }
 
@@ -25,12 +25,6 @@ public class Basket {
     public Basket(int limit) {
         this();
         this.limit = limit;
-    }
-
-    public Basket(String items) {
-        this();
-        Basket.items = Basket.items + items;
-
     }
 
     public static int getCount() {
