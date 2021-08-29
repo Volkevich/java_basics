@@ -17,32 +17,32 @@ public final class Screen {
         return diogonal;
     }
 
-    public void setDiogonal(int diogonal) {
-        this.diogonal = diogonal;
+    public Screen setDiogonal(int diogonal) {
+        return new Screen(diogonal,typeScreen,weight);
     }
 
     public TypeScreen getTypeScreen() {
         return typeScreen;
     }
 
-    public void setTypeScreen(TypeScreen typeScreen) {
-        this.typeScreen = typeScreen;
+    public Screen setTypeScreen(TypeScreen typeScreen) {
+        return new Screen(diogonal,typeScreen,weight);
     }
 
     public int getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
+    public Screen setWeight(int weight) {
+        return new Screen(diogonal,typeScreen,weight);
     }
 
     @Override
     public String toString() {
         return " " +
-                "диагональ - " + diogonal + " дюймов" +
-                ", тип экрана - " + typeScreen +
-                ", вес - " + weight + " грамм\n";
+                "диагональ - " + getDiogonal() + " дюймов" +
+                ", тип экрана - " + getTypeScreen() +
+                ", вес - " + getWeight() + " грамм\n";
     }
 
 }

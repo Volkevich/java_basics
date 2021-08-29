@@ -4,9 +4,10 @@ public final class HDD {
 
 
 
-    public TypeHDD typeHDD;
-    public int volumeHDD;
-    public int weightHDD;
+
+    public final TypeHDD typeHDD;
+    public final int volumeHDD;
+    public final int weightHDD;
 
     public HDD(TypeHDD typeHDD, int volumeHDD, int weightHDD) {
         this.volumeHDD = volumeHDD;
@@ -19,16 +20,18 @@ public final class HDD {
         return volumeHDD;
     }
 
-    public void setVolumeHDD(int volumeHDD) {
-        this.volumeHDD = volumeHDD;
+    public HDD setVolumeHDD(int volumeHDD) {
+        return new HDD(typeHDD,volumeHDD,weightHDD);
     }
-
+    public HDD setTypeHDD(TypeHDD typeHDD) {
+        return new HDD(typeHDD,volumeHDD,weightHDD);
+    }
     public int getWeightHDD() {
         return weightHDD;
     }
 
-    public void setWeightHDD(int weightHDD) {
-        this.weightHDD = weightHDD;
+    public HDD setWeightHDD(int weightHDD) {
+        return new HDD(typeHDD,volumeHDD,weightHDD);
     }
 
     public TypeHDD getTypeHDD() {
@@ -39,8 +42,8 @@ public final class HDD {
     public String toString() {
         return " " +
                 "тип - " + getTypeHDD() +
-                ", объёмом - " + volumeHDD +
-                ", вес - " + weightHDD +
+                ", объёмом - " + getVolumeHDD() + " ГБ" +
+                ", вес - " + getWeightHDD() +
                 " грамм\n";
     }
 

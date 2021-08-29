@@ -2,20 +2,22 @@ package ru.skillbox;
 
 public class Computer {
 
-    private static final String VENDOR = "INTEL";
-    private static final String NAME = "I5";
-    public final CPU cpu;
-    public final Screen screen;
-    public final HDD hdd;
-    public final RAM ram;
-    public final Keyboard keyboard;
+    private static final String VENDOR = " INTEL ";
+    private static final String NAME = " MAVERLIK4 ";
+    public CPU cpu;
+    public Screen screen;
+    public HDD hdd;
+    public RAM ram;
+    public Keyboard keyboard;
 
-    public Computer(CPU cpu, RAM ram,  HDD hdd, Screen screen, Keyboard keyboard) {
+
+    public Computer(String VENDOR, String NAME, CPU cpu, RAM ram,  HDD hdd, Screen screen, Keyboard keyboard) {
         this.cpu = cpu;
         this.screen = screen;
         this.hdd = hdd;
         this.ram = ram;
         this.keyboard = keyboard;
+
     }
 
     public CPU getCpu() {
@@ -38,6 +40,9 @@ public class Computer {
         return keyboard;
     }
 
+    public double totalWeight(){
+        return cpu.getWeight() + screen.getWeight() + hdd.getWeightHDD()+ ram.getWeight()+keyboard.getWeight();
+    }
 
     @Override
     public String toString() {
@@ -48,7 +53,8 @@ public class Computer {
                 " Монитор: " + getScreen() +
                 " Жесткий диск: " + getHdd() +
                 " Оперативная память: " + getRam() +
-                " Клавиатура: " + getKeyboard();
+                " Клавиатура: " + getKeyboard() + "\n" + "Общая масса компьютера: " + totalWeight() + " грамм";
+
     }
 
 

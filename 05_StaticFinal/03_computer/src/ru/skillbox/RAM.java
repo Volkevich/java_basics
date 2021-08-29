@@ -2,18 +2,14 @@ package ru.skillbox;
 
 public final class RAM {
 
-    public int weight;
-
-
-    public int volumeRam;
-    public TypesRam typesRam;
+    public final int weight;
+    public final int volumeRam;
+    public final TypesRam typesRam;
 
         public RAM(TypesRam typesRam,int volumeRam, int weight){
             this.volumeRam = volumeRam;
             this.weight = weight;
             this.typesRam = typesRam;
-
-
         }
 
 
@@ -22,27 +18,30 @@ public final class RAM {
         return weight;
     }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
+    public RAM setWeight(int weight) {
+        return new RAM(typesRam,volumeRam,weight);
     }
 
     public int getVolumeRam() {
         return volumeRam;
     }
 
-    public void setVolumeRam(int volumeRam) {
-        this.volumeRam = volumeRam;
+    public RAM setVolumeRam(int volumeRam) {
+        return new RAM(typesRam,volumeRam,weight);
     }
     public TypesRam getTypesRam() {
         return typesRam;
+    }
+    public RAM setTypesRam(TypesRam typesRam) {
+        return new RAM(typesRam,volumeRam,weight);
     }
 
     @Override
     public String toString() {
         return " " +
-                "объём - " + volumeRam + " ГБ" +
-                ", вес - " + weight + " грамм" +
-                ", тип памяти - " + typesRam + "\n";
+                "объём - " + getVolumeRam() + " ГБ" +
+                ", вес - " + getWeight() + " грамм" +
+                ", тип памяти - " + getTypesRam() + "\n";
     }
 
 
