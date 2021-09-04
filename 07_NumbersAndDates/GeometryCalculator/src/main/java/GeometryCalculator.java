@@ -6,14 +6,11 @@ public class GeometryCalculator {
 
     // метод должен использовать абсолютное значение radius
     public static double getSphereVolume(double radius) {
-        return (4/3 * Math.PI * Math.pow(Math.abs(radius),3));
+        return (4 * Math.PI * Math.pow(Math.abs(radius),3))/3;
     }
 
     public static boolean isTrianglePossible(double a, double b, double c) {
-        boolean p = false;
-        if ((a + b > c) && (a + c > b) && (b + c > a))
-            p = true;
-        return p;
+      return (a + b > c) && (a + c > b) && (b + c > a);
     }
 
     // перед расчетом площади рекомендуется проверить возможен ли такой треугольник
