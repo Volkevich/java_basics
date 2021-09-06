@@ -8,7 +8,6 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите количество ящиков: ");
         String boxes = scanner.nextLine();
         int boxesCount = Integer.parseInt(boxes);
 
@@ -18,22 +17,25 @@ public class Main {
             for (int i = 1; i <= boxesCount; i++) {
                 System.out.println("\t\tЯщик: " + i);
                 if (i % (BOXES_IN_CONTAINER * CONTAINERS_IN_TRUCKS) == 0) {
-
                     truckNumber += 1;
                     System.out.println("Грузовик: " + truckNumber);
                 }
                 if (i % BOXES_IN_CONTAINER == 0) {
-                    containerNumber += 1;
-                    System.out.println("\tКонтейнер: " + containerNumber);
+                    if(i != boxesCount){
+                        containerNumber ++;
+                        System.out.println("\tКонтейнер: " + containerNumber);
+                    }
                 }
-            } System.out.println("Необходимо: "+System.lineSeparator()+"\tгрузовиков: "+ truckNumber +" шт."+System.lineSeparator()+"\tконтейнеров: "
+
+
+            } System.out.println("Необходимо:"+System.lineSeparator()+"грузовиков - "+ truckNumber +" шт."+System.lineSeparator()+"контейнеров - "
                     + containerNumber +" шт.");
 
 
-        }else System.out.println("Необходимо: "+System.lineSeparator()+"\tгрузовиков: "+ --truckNumber +" шт."+System.lineSeparator()+"\tконтейнеров: "
+        }else System.out.println("Необходимо:"+System.lineSeparator()+"грузовиков - "+ --truckNumber +" шт."+System.lineSeparator()+"контейнеров - "
                 + --containerNumber +" шт.");
     }
-    }
+}
 
 
 
