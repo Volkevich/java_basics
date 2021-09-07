@@ -1,3 +1,8 @@
+import java.text.Format;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Date;
 
 public class Main {
 
@@ -12,6 +17,9 @@ public class Main {
     }
 
     public static String collectBirthdays(int year, int month, int day) {
+        LocalDate birthday = LocalDate.of(1995,10,04);
+
+        System.out.println(birthday);
 
         //TODO реализуйте метод для построения строки в следующем виде
         //0 - 31.12.1990 - Mon

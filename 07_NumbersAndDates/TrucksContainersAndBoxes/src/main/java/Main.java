@@ -3,13 +3,14 @@ import java.util.Scanner;
 public class Main {
     public static final int BOXES_IN_CONTAINER = 27;
     public static final int CONTAINERS_IN_TRUCKS = 12;
-    public static int containerNumber = 1;
-    public static int truckNumber = 1;
-    public static int i;
-    public static int boxesCount;
+
 
 
     public static void main(String[] args) {
+        int containerNumber = 1;
+        int truckNumber = 1;
+        int i;
+        int boxesCount;
         Scanner scanner = new Scanner(System.in);
         String boxes = scanner.nextLine();
         boxesCount = Integer.parseInt(boxes);
