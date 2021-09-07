@@ -5,37 +5,44 @@ public class Main {
     public static final int CONTAINERS_IN_TRUCKS = 12;
     public static int containerNumber = 1;
     public static int truckNumber = 1;
+    public static int i;
+    public static int boxesCount;
+
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String boxes = scanner.nextLine();
-        int boxesCount = Integer.parseInt(boxes);
+        boxesCount = Integer.parseInt(boxes);
 
         if (boxesCount != 0) {
             System.out.println("Грузовик: " + truckNumber);
             System.out.println("\tКонтейнер: " + containerNumber);
-            for (int i = 1; i <= boxesCount; i++) {
+            for (i = 1; i <= boxesCount; i++) {
                 System.out.println("\t\tЯщик: " + i);
                 if (i % (BOXES_IN_CONTAINER * CONTAINERS_IN_TRUCKS) == 0) {
                     truckNumber += 1;
                     System.out.println("Грузовик: " + truckNumber);
                 }
                 if (i % BOXES_IN_CONTAINER == 0) {
-                    if(i != boxesCount){
-                        containerNumber ++;
+                    if (i != boxesCount) {
+                        containerNumber++;
                         System.out.println("\tКонтейнер: " + containerNumber);
                     }
                 }
 
 
-            } System.out.println("Необходимо:"+System.lineSeparator()+"грузовиков - "+ truckNumber +" шт."+System.lineSeparator()+"контейнеров - "
-                    + containerNumber +" шт.");
+            }
+            System.out.println("Необходимо:" + System.lineSeparator() + "грузовиков - " + truckNumber + " шт." + System.lineSeparator() + "контейнеров - "
+                    + containerNumber + " шт.");
 
 
-        }else System.out.println("Необходимо:"+System.lineSeparator()+"грузовиков - "+ --truckNumber +" шт."+System.lineSeparator()+"контейнеров - "
-                + --containerNumber +" шт.");
+        } else {
+            System.out.println("Необходимо:" + System.lineSeparator() + "грузовиков - " + --truckNumber + " шт." + System.lineSeparator() + "контейнеров - "
+                    + --containerNumber + " шт.");
+        }
     }
 }
+
 
 
 
