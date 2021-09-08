@@ -3,23 +3,37 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Date;
+import java.util.Locale;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        int day = 31;
-        int month = 12;
-        int year = 1990;
+        int day = 04;
+        int month = 10;
+        int year = 1995;
 
         System.out.println(collectBirthdays(year, month, day));
 
     }
 
     public static String collectBirthdays(int year, int month, int day) {
-        LocalDate birthday = LocalDate.of(1995,10,04);
+        LocalDate birthday = LocalDate.of(year,month,day);
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy - E").localizedBy(Locale.forLanguageTag("us"));
+        int i = 0;
+        if (birthday.isBefore(today)){
+            while (birthday.isBefore(today)){
+                System.out.println(i + " - " + birthday.format(formatter));
+                birthday = birthday.plusYears(1);
+                i++;
+            }
+        }else if (birthday.isEqual(today)){
+            System.out.println(birthday.format(formatter));
+        }
 
-        System.out.println(birthday);
+
+
 
         //TODO реализуйте метод для построения строки в следующем виде
         //0 - 31.12.1990 - Mon
