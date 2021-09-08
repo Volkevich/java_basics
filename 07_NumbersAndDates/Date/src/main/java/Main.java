@@ -22,23 +22,25 @@ public class Main {
         LocalDate today = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy - E").localizedBy(Locale.forLanguageTag("us"));
         int i = 0;
-        if (birthday.isBefore(today)){
+        String date = "";
+        if (birthday.isBefore(today)){ //ДО
             while (birthday.isBefore(today)){
-                System.out.println(i + " - " + birthday.format(formatter));
+                date = date + i + " - " + birthday.format(formatter) + System.lineSeparator();
+                birthday = birthday.plusYears(1);
+                i++;
+
+            }
+        }else if (birthday.isAfter(today)){ //После
+            while (birthday.isAfter(today)){
+                date = date + i + " - " + birthday.format(formatter) + System.lineSeparator();
                 birthday = birthday.plusYears(1);
                 i++;
             }
-        }else if (birthday.isEqual(today)){
-            System.out.println(birthday.format(formatter));
         }
-
-
-
-
         //TODO реализуйте метод для построения строки в следующем виде
         //0 - 31.12.1990 - Mon
         //1 - 31.12.1991 - Tue
         
-        return "";
+        return date;
     }
 }
