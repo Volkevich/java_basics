@@ -18,29 +18,21 @@ public class Main {
     }
 
     public static String collectBirthdays(int year, int month, int day) {
-        LocalDate birthday = LocalDate.of(year,month,day);
+        LocalDate birthday = LocalDate.of(year, month, day);
         LocalDate today = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy - E").localizedBy(Locale.forLanguageTag("us"));
         int i = 0;
         String date = "";
-        if (birthday.isBefore(today)){ //ДО
-            while (birthday.isBefore(today)){
-                date = date + i + " - " + birthday.format(formatter) + System.lineSeparator();
-                birthday = birthday.plusYears(1);
-                i++;
-
-            }
-        }else if (birthday.isAfter(today)){ //После
-            while (birthday.isAfter(today)){
-                date = date + i + " - " + birthday.format(formatter) + System.lineSeparator();
-                birthday = birthday.plusYears(1);
-                i++;
-            }
+        while (birthday.isBefore(today)) { //до
+            date = date + i + " - " + birthday.format(formatter) + System.lineSeparator();
+            birthday = birthday.plusYears(1);
+            i++;
         }
-        //TODO реализуйте метод для построения строки в следующем виде
-        //0 - 31.12.1990 - Mon
-        //1 - 31.12.1991 - Tue
-        
         return date;
     }
 }
+        //TODO реализуйте метод для построения строки в следующем виде
+        //0 - 31.12.1990 - Mon
+        //1 - 31.12.1991 - Tue
+
+
