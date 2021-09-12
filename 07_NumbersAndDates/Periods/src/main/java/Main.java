@@ -1,29 +1,31 @@
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Date;
+import java.util.Locale;
 
 public class Main {
 
   public static void main(String[] args) {
 
-    LocalDate birthday = LocalDate.of(1970,1,1);
+    LocalDate birthday = LocalDate.EPOCH;
     System.out.println(getPeriodFromBirthday(birthday));
 
   }
   public static String getPeriodFromBirthday(LocalDate birthday){
-
-      LocalDate now = LocalDate.now();
-      String years = "";
-      years = years + ChronoUnit.YEARS.between(now,birthday);
-    String day = "";
-    day = day + ChronoUnit.DAYS.between(now,birthday);
-    String month = "";
-    month = month + ChronoUnit.MONTHS.between(now,birthday);
-      String period = "";
-      period = period + years + month + day;
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+    LocalDate startDate = LocalDate.parse("01.01.1970",formatter);
+    LocalDate endDate = LocalDate.now();
+    Period period = Period.between(startDate,endDate);
+    StringBuilder text = new StringBuilder();
+    text.append(period.getYears()).append(" years ").append(period.getMonths()).append(" months ").append(period.getDays()).append(" day");
 
 
-      return period;
+
+
+      return text.toString();
     }
 
 
