@@ -8,11 +8,7 @@ public class Main {
     int j = 0;
     Scanner scanner = new Scanner(System.in);
     String fio = scanner.nextLine();
-    String temp = "";
-    String[] fioMass = new String[3];
-    for (int i = 0; i < fio.length();i++) {
-      if ()
-    }
+    String[] fioMass = fio.split(" "); // разделяет строку на массив
     if (fioMass.length != 3) {
       System.out.println("Введенная строка не является ФИО");
     }
