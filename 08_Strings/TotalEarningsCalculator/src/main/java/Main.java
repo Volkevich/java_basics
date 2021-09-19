@@ -7,31 +7,22 @@ public class Main {
     System.out.println(getCountmany(text));
   }
 
-  public static String getCountmany(String text){
-    String Vasya = "заработал ";
-    String Petya = " Петя - ";
-    String Masha = " Маша - ";
+  public static String getCountmany(String text) {
 
-    int startVasya = text.indexOf(Vasya);
-    int endVasya = text.indexOf(" рублей, ",startVasya);
-    int startPetya = text.indexOf(Petya);
-    int endPetya = text.indexOf(" рубля, ", startPetya);
-    int startMasha = text.indexOf(Masha);
-    int endMasha = text.indexOf(" рублей",startMasha);
-    String MashaCount = text.substring(startMasha + Masha.length(),endMasha);
+    String count = "";
+    int countSum = 0;
+    for (int i = 0; i < text.length(); i++) {
+      char symbol = text.charAt(i);
+      if (Character.isDigit(symbol)){
+        int end = text.indexOf(" р",i);
+        count = text.substring(i,end);
+        countSum += Integer.parseInt(count);
+        i=end;
+      }
 
-    String PetyaCount = text.substring(startPetya + Petya.length(),endPetya);
+    }
+    System.out.println(countSum);
 
-    String VasyaCount = text.substring(startVasya + Vasya.length(),endVasya);
-
-    int countMasha = Integer.parseInt(MashaCount);
-    int countPetya = Integer.parseInt(PetyaCount);
-    int countVasya = Integer.parseInt(VasyaCount);
-    Integer countAll = countMasha + countPetya + countVasya;
-
-
-    return countAll.toString();
+    return " ";
   }
-
-
 }
