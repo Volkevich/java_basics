@@ -4,46 +4,55 @@ import java.util.Scanner;
 public class Main {
 
   public static void main(String[] args) {
-    boolean isFio = false;
-    int j = 0;
+    String firstName = "";
+    String iotName = "";
+    String otcName = "";
+
     Scanner scanner = new Scanner(System.in);
     String fio = scanner.nextLine();
-    String[] fioMass = fio.split(" "); // разделяет строку на массив
-    if (fioMass.length != 3) {
-      System.out.println("Введенная строка не является ФИО");
-    }
 
-    while ((fioMass.length == 3) && (j < 3)) {
 
-      for (int i = 0; i < fioMass[j].length(); i++) {
-        char fioSymbol = fioMass[j].charAt(i);
-        int ascii = (int) fioSymbol;
-        if ((ascii > 1039 && ascii <= 1103) || (ascii == 45)) {
-          isFio = true;
 
-        } else {
-          isFio = false;
+
+    while (true) {
+      int spaceCount = 0;
+      for (int i = 0; i < fio.length(); i++) {
+        char fioSymbol = fio.charAt(i);
+        if (fioSymbol == ' '){
+          spaceCount++;
+        }
+        if (!Character.UnicodeBlock.of(fioSymbol).equals(Character.UnicodeBlock.CYRILLIC)) {
+          System.out.println("Введенная строка не является ФИО");
+
+          break;
+        }
+        if (Character.isDigit(fioSymbol)){
           System.out.println("Введенная строка не является ФИО");
           break;
         }
 
-      }
-      if (!isFio) {
-        break;
-      }else {
-        j+=1;
-      }
+        if (spaceCount < 3){
+          int end = fio.indexOf(" ");
+          firstName = fio.substring(i,end);
+          int end2 = fio.indexOf(" ");
+          int start = fio.lastIndexOf(i);
+          otcName = fio.substring(start,end2);
 
-      if (isFio) {
-        String template = "Фамилия: %s\nИмя: %s\nОтчество: %s\n";
-        System.out.printf(template,fioMass[0],fioMass[1],fioMass[2]);
+
+          String template = "Фамилия: %s\nИмя: %s\nОтчество: %s\n";
+          System.out.println(firstName + otcName);
+          System.out.println(otcName);
+
+        }else {
+          System.out.println("Введенная строка не является ФИО");
+        }
         break;
-      } else {
-        System.out.println("Введенная строка не является ФИО");
+      }
+      break;
       }
     }
   }
-}
+
 //TODO:напишите ваш код тут, результат вывести в консоль.
 //При невалидном ФИО вывести в консоль: Введенная строка не является ФИО
 
