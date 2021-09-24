@@ -7,6 +7,7 @@ public class Main {
     String firstName = "";
     String iotName = "";
     String otcName = "";
+    int spaceCount = 0;
 
     Scanner scanner = new Scanner(System.in);
     String fio = scanner.nextLine();
@@ -15,15 +16,18 @@ public class Main {
 
 
     while (true) {
-      int spaceCount = 0;
+
       for (int i = 0; i < fio.length(); i++) {
+
         char fioSymbol = fio.charAt(i);
-        if (fioSymbol == ' '){
+        if (fioSymbol == ' ') {
           spaceCount++;
         }
+      }
+      for (int i = 0; i < fio.length(); i++) {
+        char fioSymbol = fio.charAt(i);
         if (!Character.UnicodeBlock.of(fioSymbol).equals(Character.UnicodeBlock.CYRILLIC)) {
           System.out.println("Введенная строка не является ФИО");
-
           break;
         }
         if (Character.isDigit(fioSymbol)){
@@ -34,14 +38,11 @@ public class Main {
         if (spaceCount < 3){
           int end = fio.indexOf(" ");
           firstName = fio.substring(i,end);
-          int end2 = fio.indexOf(" ");
-          int start = fio.lastIndexOf(i);
-          otcName = fio.substring(start,end2);
 
 
           String template = "Фамилия: %s\nИмя: %s\nОтчество: %s\n";
           System.out.println(firstName + otcName);
-          System.out.println(otcName);
+          System.out.println(spaceCount);
 
         }else {
           System.out.println("Введенная строка не является ФИО");
