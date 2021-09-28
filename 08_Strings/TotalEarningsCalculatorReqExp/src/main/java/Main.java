@@ -1,4 +1,5 @@
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
 
@@ -8,18 +9,17 @@ public class Main {
   }
 
   public static int calculateSalarySum(String text) {
+
     String[] salary = text.split("[^0-9]+");
+    int countSum = 0;
+
 
     for (int i = 1; i < salary.length; i++) {
+    countSum += Integer.parseInt(salary[i]);
 
     }
 
-      int salary1 = Integer.parseInt(salary[1]);
-      int salary2 = Integer.parseInt(salary[2]);
-      int salary3 = Integer.parseInt(salary[3]);
-      Integer countSalary = salary1 + salary2 + salary3;
-
-      return countSalary;
+    return countSum;
     }
 
 
