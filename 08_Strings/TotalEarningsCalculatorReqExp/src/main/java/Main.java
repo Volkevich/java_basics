@@ -13,7 +13,7 @@ public class Main {
         Matcher matcher = pattern.matcher(text);
         int countSum = 0;
         while (matcher.find())
-            countSum += Integer.parseInt(matcher.group(1).substring(0, matcher.group(0).indexOf(" ")));
+            countSum += Integer.parseInt(matcher.group(1));
         return countSum;
     }
 
