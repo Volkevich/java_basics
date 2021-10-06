@@ -1,3 +1,5 @@
+import java.util.regex.Pattern;
+
 public class Main {
 
   public static void main(String[] args) {
@@ -13,14 +15,19 @@ public class Main {
   }
 
   public static String splitTextIntoWords(String text) {
-    String[] words = text.split("[\\s,\\.]+".trim());
+
+    String regex = "";
+    String[] words = text.split("[^a-zA-Z[’]]+".trim());
     for (int i = 0; i < words.length;i++){
-      System.out.println(words[i]);
+      regex += words[i]+"\n";
+
     }
 
 
+
+
     //TODO реализуйте метод
-    return "";
+    return regex.trim() ;
   }
 
 }
