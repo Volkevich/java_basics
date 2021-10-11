@@ -1,10 +1,11 @@
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
 
-        float[] temperatureData = Hospital.generatePatientsTemperatures(10);
-        System.out.println(Arrays.toString(temperatureData));
+        float[] temperatureData = Hospital.generatePatientsTemperatures(3);
+        System.out.println(Hospital.getReport(temperatureData));
 
         //Пример вывода в консоль:
         //Температуры пациентов: 36.7 38.9 34.7
