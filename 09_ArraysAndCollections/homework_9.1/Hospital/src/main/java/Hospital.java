@@ -1,32 +1,45 @@
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Random;
 
 public class Hospital {
 
     public static float[] generatePatientsTemperatures(int patientsCount) {
-        float[]tempricha = new float[patientsCount];
-        float max = 40;
-        float min = 32;
-        for (int i = 0;i < tempricha.length;i++){
-            tempricha[i] += (Math.random()*((max-min)+1))+min;
-            tempricha[i] = Math.round(tempricha[i]);
-
+        float[]temperature = new float[patientsCount];
+        final int max = 40;
+        final int min = 32;
+        float scele = (float) Math.pow(10,1);
+        for (int i = 0;i < patientsCount;i++){
+            temperature[i] = Math.round((Math.random()*((max - min)) + min)*scele)/scele;
         }
 
         //TODO: напишите метод генерации массива температур пациентов
 
-        return tempricha;
+        return temperature;
     }
 
     public static String getReport(float[] temperatureData) {
-        /*
-        TODO: Напишите код, который выводит среднюю температуру по больнице,количество здоровых пациентов,
-            а также температуры всех пациентов.
-        */
+        float temperatureCount = 0;
+        float temperatureMidl;
+        int helsPiople = 0;
+        float step = (float) Math.pow(10,2);
+       for (int i = 0; i < temperatureData.length ;i++){
+           temperatureCount += temperatureData[i];
+           if (temperatureData[i] > 36.1 && temperatureData[i] < 37.0)
+               helsPiople++;
+
+       }
+        temperatureMidl = temperatureCount / temperatureData.length;
+        temperatureMidl = Math.round((temperatureMidl)*step)/step;
+
+
+        //TODO: Напишите код, который выводит среднюю температуру по больнице,количество здоровых пациентов,
+           // а также температуры всех пациентов.
 
         String report =
-                "Температуры пациентов: " + 0 +
-                        "\nСредняя температура: " + 0 +
-                        "\nКоличество здоровых: " + 0;
+                "Температуры пациентов: " + Arrays.toString(temperatureData).replaceAll(",","").replaceAll("]","").replaceAll("\\[","") +
+                        "\nСредняя температура: " + temperatureMidl +
+                        "\nКоличество здоровых: " + helsPiople;
 
         return report;
     }
