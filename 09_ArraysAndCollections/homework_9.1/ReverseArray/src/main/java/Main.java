@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -8,7 +10,5 @@ public class Main {
         String[] input = line.split(" ");
         ReverseArray.reverse(input);
         System.out.print(Arrays.toString(input));
-
-
     }
-    }
+}
