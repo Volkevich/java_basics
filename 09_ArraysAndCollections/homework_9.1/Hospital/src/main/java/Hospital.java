@@ -22,10 +22,12 @@ public class Hospital {
         float temperatureCount = 0;
         float temperatureMidl;
         int helsPiople = 0;
+        final float maxTempricha = 36.9f;
+        final float minTempricha = 36.2f;
         float step = (float) Math.pow(10,2);
        for (int i = 0; i < temperatureData.length ;i++){
            temperatureCount += temperatureData[i];
-           if (temperatureData[i] > 36.1 && temperatureData[i] < 37.0)
+           if (temperatureData[i] >= minTempricha && temperatureData[i] <= maxTempricha)
                helsPiople++;
 
        }
