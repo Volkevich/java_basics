@@ -3,16 +3,23 @@ import java.util.Arrays;
 public class TwoDimensionalArray {
 
     public static char symbol = 'X';
-    public static char symbol2 = ' ';
+
 
     public static char[][] getTwoDimensionalArray(int size) {
         char[][]ris = new char[size][size];
         for (int i = 0; i < size;i++){
-            ris[i][i] = symbol;
-            for (int j = 0; j < ris.length;j++){
-                ris[i][i] = symbol2;
+            for (int j = 0; j < size;j++){
+                if ((i == 0 && j == 0) || (i == 0 && j == (size-1))||(i == size-1 && j == 0)||((i == (size-1)) && j == (size-1)) ||
+                        ((i==((size-1)/2) && j == ((size-1)/2)))) {
+                    ris[i][j] = symbol;
+                }
+                else
+                    ris[i][j] = ' ';
+                System.out.print(ris[i][j]);
+
             }
-            System.out.println(Arrays.toString(ris[i]));
+            System.out.println();
+
         }
         //TODO: Написать метод, который создаст двумерный массив char заданного размера.
         // массив должен содержать символ symbol по диагоналям, пример для size = 3
