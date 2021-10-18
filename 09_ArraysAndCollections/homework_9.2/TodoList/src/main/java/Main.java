@@ -10,25 +10,30 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             String s  = scanner.nextLine();
 
-            Pattern pattern = Pattern.compile("([A-Z]+)\\s?(\\d*)\\s?(.*)");
+            final Pattern pattern = Pattern.compile("(LIST|ADD|DELETE|EDIT)\\s?(\\d*)\\s?(.*)");
             Matcher matcher = pattern.matcher(s);
-            while (matcher.find()){
+            while (matcher.matches()){
                 if (matcher.group(1).equals("ADD")){
                     if (!matcher.group(2).equals("")&&Character.isDigit(Integer.parseInt(matcher.group(2)))){
-                        todoList.list.add(Integer.parseInt(matcher.group(2)),matcher.group(3));
+                        todoList.add(Integer.parseInt(matcher.group(2)),matcher.group(3));
+                        break;
                     }else {
-                        todoList.list.add(matcher.group(3));
+                        todoList.add(matcher.group(3));
+                        break;
                     }
 
                 }
                 else if (matcher.group(1).equals("EDIT")){
-                    todoList.list.set(Integer.parseInt(matcher.group(3)),matcher.group(2));
+                    todoList.edit(matcher.group(3),(Integer.parseInt(matcher.group(2))));
+                    break;
                 }
                 else if (matcher.group(1).equals("DELETE")){
-                    todoList.list.remove(Integer.parseInt(matcher.group(2)));
+                    todoList.delete((Integer.parseInt(matcher.group(2))));
+                    break;
                 }
                 else if (matcher.group(1).equals("LIST")){
                     System.out.println(todoList.getTodos());
+                    break;
                 }
             }
         }
