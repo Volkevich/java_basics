@@ -13,6 +13,7 @@ public class TodoList {
         //  проверьте возможность добавления
         if (index < list.size()&&index >= 0){
             list.add(index,todo);
+
         }else {
             list.add(todo);
         }
