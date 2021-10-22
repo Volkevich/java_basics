@@ -9,23 +9,21 @@ public class EmailList {
     public void add(String email) {
         if (email.matches(addEmail)) {
             list.add(email.toLowerCase(Locale.ROOT));
-        }else {
-            System.out.println(Main.WRONG_EMAIL_ANSWER);
+            return;
         }
         // TODO: валидный формат email добавляется
     }
 
 
 
-        public List<String> getSortedEmails() {
-            // TODO: возвращается список электронных адресов в алфавитном порядке
-            List<String> strings = new ArrayList<>(list);
-            Collections.sort(strings);
-            for (String s: list){
-                System.out.println(s);
-            }
-            return strings;
+    public List<String> getSortedEmails() {
+        // TODO: возвращается список электронных адресов в алфавитном порядке
+        List<String> strings = new ArrayList<>(list);
+        Collections.sort(strings);
+        for (String s: list){
+            System.out.println(s);
         }
-
+        return strings;
     }
 
+}

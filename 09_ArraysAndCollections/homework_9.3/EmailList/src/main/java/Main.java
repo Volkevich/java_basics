@@ -13,23 +13,25 @@ public class Main {
 
             String s = scanner.nextLine();
             if (s.equals("0")) {
+                System.out.println("Выход!");
                 break;
             }
 
             String regex = "(ADD|add)\\s[a-zA-Z0-9.]+@[a-zA-Z]+\\.[a-z]{2,3}";
-            if (s.matches(regex)){
-                String[]text = s.split("\\s");
+            if (s.matches(regex)) {
+                String[] text = s.split("\\s");
                 emailList.add(text[1]);
                 System.out.println("Электронная почта успешна добавлена!");
-            }
-            if (s.equals("LIST")){
+
+            } else if (s.equals("LIST") || s.equals("list")) {
                 System.out.println("Список электронных почтовых ящиков:");
                 emailList.getSortedEmails();
+            } else if (!s.matches(regex)) {
+                System.out.println(Main.WRONG_EMAIL_ANSWER);
             }
 
-                    //TODO: write code here
+            //TODO: write code here
 
-                }
-            }
         }
-
+    }
+}
