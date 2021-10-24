@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class TodoList {
-    private final ArrayList<String>list = new ArrayList<>();
+    private final ArrayList<String> list = new ArrayList<>();
 
     public void add(String todo) {
         // TODO: добавьте переданное дело в конец списка
@@ -11,32 +11,30 @@ public class TodoList {
     public void add(int index, String todo) {
         // TODO: добавьте дело на указаный индекс,
         //  проверьте возможность добавления
-        if (index < list.size()&&index >= 0){
-            list.add(index,todo);
+        if (index < list.size() && index >= 0) {
+            list.add(index, todo);
 
-        }else {
+        } else {
             list.add(todo);
         }
     }
 
-    public void edit(String todo, int index) {
+    public String edit(String todo, int index) {
+        String editIndex = null;
         // TODO: заменить дело на index переданным todo индекс,
         //  проверьте возможность изменения
-        if (index < list.size()&&index >= 0){
-            System.out.println("Дело \""+ list.get(index)+"\" заменено на \""+ todo + "\"");
-            list.set(index,todo);
-        }else {
-            System.out.println("Дело с таким номером не существует");
+        if (index < list.size() && index >= 0) {
+            editIndex = list.set(index, todo);
         }
+        return editIndex;
     }
 
-    public void delete(int index) {
-        if (index < list.size()&&index >= 0){
-            System.out.println("Дело \""+ list.get(index)+"\" удалено!");
-            list.remove(index);
-        }else {
-            System.out.println("Дело с таким номером не существует");
+    public String delete(int index) {
+        String deletedIndex = null;
+        if (index < list.size() && index >= 0) {
+            deletedIndex = list.remove(index);
         }
+        return deletedIndex;
     }
 
     public ArrayList<String> getTodos() {
