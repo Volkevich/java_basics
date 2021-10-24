@@ -2,14 +2,16 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class EmailList {
-    public final TreeSet<String> list = new TreeSet<>();
-    public static final String addEmail = "[a-zA-Z]+@[a-zA-Z.]+\\.[a-z]{2,3}";
+    private final TreeSet<String> list = new TreeSet<>();
+    public static final String regex = "[a-zA-Z]+@[a-zA-Z.]+\\.[a-z]{2,3}";
 
 
-    public void add(String email) {
-        if (email.matches(addEmail)) {
+    public boolean add(String email) {
+        if (email.matches(regex)) {
             list.add(email.toLowerCase(Locale.ROOT));
-            return;
+            return true;
+        }else {
+            return false;
         }
         // TODO: валидный формат email добавляется
     }
@@ -18,12 +20,8 @@ public class EmailList {
 
     public List<String> getSortedEmails() {
         // TODO: возвращается список электронных адресов в алфавитном порядке
-        List<String> strings = new ArrayList<>(list);
-        Collections.sort(strings);
-        for (String s: list){
-            System.out.println(s);
-        }
-        return strings;
+
+        return new ArrayList<>(list);
     }
 
 }

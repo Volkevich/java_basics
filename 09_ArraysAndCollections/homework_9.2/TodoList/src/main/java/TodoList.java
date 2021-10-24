@@ -41,10 +41,7 @@ public class TodoList {
 
     public ArrayList<String> getTodos() {
         // TODO: вернуть список дел
-        for (int i = 0; i < list.size();i++){
-            String text = list.get(i);
-            System.out.println(i + " - " + text);
-        }
-        return list;
+
+        return new ArrayList<>(list);
     }
 }

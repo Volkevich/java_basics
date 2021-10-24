@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,20 +15,35 @@ public class Main {
             String s = scanner.nextLine();
             if (s.equals("0")) {
                 System.out.println("Выход!");
-                break;
             }
+            Pattern pattern = Pattern.compile("(ADD|LIST)\\s?([a-zA-Z0-9.]+@[a-zA-Z]+\\.[a-z]{2,3})?");
+            Matcher matcher = pattern.matcher(s);
+            if (matcher.find()) {
 
-            String regex = "(ADD|add)\\s[a-zA-Z0-9.]+@[a-zA-Z]+\\.[a-z]{2,3}";
-            if (s.matches(regex)) {
-                String[] text = s.split("\\s");
-                emailList.add(text[1]);
-                System.out.println("Электронная почта успешна добавлена!");
+                String command = matcher.group(1);
+                switch (command) {
+                    case "ADD":
+                        String extractedEmail = matcher.group(2);
+                        if (Objects.nonNull(extractedEmail)) {
+                            boolean isSucsesfulAdd = emailList.add(extractedEmail);
+                            if (isSucsesfulAdd) {
+                                System.out.println("Электронная почта успешна добавлена!");
+                            }
+                        } else {
+                            System.out.println(WRONG_EMAIL_ANSWER);
+                        }
+                        break;
+                    case "LIST":
+                        List<String> sortedEmails = emailList.getSortedEmails();
+                        for (String email : sortedEmails) {
+                            System.out.println(email);
+                        }
+                        break;
 
-            } else if (s.equals("LIST") || s.equals("list")) {
-                System.out.println("Список электронных почтовых ящиков:");
-                emailList.getSortedEmails();
-            } else if (!s.matches(regex)) {
-                System.out.println(Main.WRONG_EMAIL_ANSWER);
+                }
+
+            } else {
+                System.out.println("Команда введена неверно!");
             }
 
             //TODO: write code here
