@@ -16,9 +16,9 @@ public class Main {
             if (s.equals("0")) {
                 System.out.println("Выход!");
             }
-            Pattern pattern = Pattern.compile("(ADD|LIST)\\s?([a-zA-Z0-9.]+@[a-zA-Z]+\\.[a-z]{2,3})?");
+            final Pattern pattern = Pattern.compile("(ADD|LIST)\\s?([a-zA-Z0-9.]+@[a-zA-Z]+\\.[a-z]{2,3})?");
             Matcher matcher = pattern.matcher(s);
-            if (matcher.find()) {
+            if (matcher.matches()) {
 
                 String command = matcher.group(1);
                 switch (command) {
