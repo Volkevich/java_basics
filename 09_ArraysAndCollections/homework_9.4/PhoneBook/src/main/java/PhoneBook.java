@@ -3,7 +3,8 @@ import java.util.*;
 public class PhoneBook {
 
     private final String REGEX_NAME = "[а-яА-ЯеЁ]+";
-    private final String REGEX_PHONE = "[\\d]{10}";
+    private final String REGEX_PHONE = "[\\d]{11}";
+    private final String ERROR = "Неверный формат";
     Scanner scanner = new Scanner(System.in);
 
     Map<String, String> mapPhoneBook = new TreeMap<>();
@@ -12,13 +13,18 @@ public class PhoneBook {
 
     public void addContact(String phone, String name) {
         if (phone.matches(REGEX_PHONE) && name.matches(REGEX_NAME)) {
-            if (mapPhoneBook.containsValue(phone)) {
-                System.out.println("Такой номер уже есть");
-                mapPhoneBook.replace(phone, mapPhoneBook.get(phone), name);
+            if (mapPhoneBook.containsKey(phone)) {
+                System.out.println("Такой номер уже есть в списке");
+                System.out.println("Укажите новое имя для абонента " + phone);
+                String newName = scanner.nextLine();
+                mapPhoneBook.replace(phone, mapPhoneBook.get(phone), newName);
                 System.out.println("Номер перезаписан");
             } else {
                 mapPhoneBook.put(phone, name);
             }
+        }else {
+            System.out.println(ERROR);
+            return;
         }
     }
 
