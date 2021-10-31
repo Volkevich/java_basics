@@ -25,8 +25,8 @@ public class Main {
                     case "ADD":
                         String extractedEmail = matcher.group(2);
                         if (Objects.nonNull(extractedEmail)) {
-                            boolean isSucsesfulAdd = emailList.add(extractedEmail);
-                            if (isSucsesfulAdd) {
+                            boolean isSuccessfulAdd = emailList.add(extractedEmail);
+                            if (isSuccessfulAdd) {
                                 System.out.println("Электронная почта успешна добавлена!");
                             }
                         } else {

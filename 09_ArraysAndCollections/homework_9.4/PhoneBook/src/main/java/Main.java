@@ -15,7 +15,7 @@ public class Main {
             String string = scanner.nextLine();
 
 
-            if (string.matches(REGEX_NAME)&&!phoneBook.mapPhoneBook.containsValue(string)) {
+            if (string.matches(REGEX_NAME)) {
                 System.out.println("Такого имени в телефоне нет.");
                 System.out.println("Введите номер телефона для абонента \"" + string + "\"");
                 String newPhone = scanner.nextLine();
@@ -44,9 +44,7 @@ public class Main {
                 System.out.println(ERROR);
                 return;
             }
-            else if (phoneBook.mapPhoneBook.containsValue(string)){
-                System.out.println(phoneBook.getContactByName(string) + phoneBook.getContactByPhone(string));
-            }
+
         }
 
 
