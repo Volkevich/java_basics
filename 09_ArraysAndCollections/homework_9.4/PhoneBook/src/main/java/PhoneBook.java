@@ -4,71 +4,135 @@ public class PhoneBook {
 
     private final String REGEX_NAME = "[а-яА-ЯеЁ]+";
     private final String REGEX_PHONE = "[\\d]{11}";
-    private final String ERROR = "Неверный формат";
-    Scanner scanner = new Scanner(System.in);
-
-    Map<String, String> mapPhoneBook = new TreeMap<>();
-    Set<String> setPhoneBook = new TreeSet<>();
+    private final String ERROR = "Неверный формат ввода";
+    private Map<String, TreeSet<String>> mapPhoneBook = new TreeMap<>();
+    private Scanner scanner = new Scanner(System.in);
 
 
     public void addContact(String phone, String name) {
-        if (phone.matches(REGEX_PHONE) && name.matches(REGEX_NAME)) {
-            if (mapPhoneBook.containsKey(phone)) {
-                System.out.println("Такой номер уже есть в списке");
-                System.out.println("Укажите новое имя для абонента " + phone);
-                String newName = scanner.nextLine();
-                mapPhoneBook.replace(phone, mapPhoneBook.get(phone), newName);
-                System.out.println("Номер перезаписан");
-            } else {
-                mapPhoneBook.put(phone, name);
-            }
-        } else {
-            System.out.println(ERROR);
-            return;
-        }
+        TreeSet<String> temp = new TreeSet<>();
+        if (mapPhoneBook.get(name) != null)
+            temp.addAll(mapPhoneBook.get(name));
+        temp.add(phone);
+        mapPhoneBook.put(name, temp);
+        System.out.println("Контакт сохранен!");
+
     }
 
     // проверьте корректность формата имени и телефона (отдельные методы для проверки)
     // если такой номер уже есть в списке, то перезаписать имя абонента
+    public void controller(String input) {
+
+        if (input.matches(REGEX_PHONE)) {
+            if (search(input)) {
+
+                System.out.println(String.join(", ", getContactByPhone(input)));
+            } else {
+                inputName(input);
+            }
+
+        } else if (input.matches(REGEX_NAME)) {
+            if (search(input))
+                System.out.println(String.join(", ", getContactByName(input)));
+            else
+                inputNumber(input);
+
+        } else if (input.equals("LIST")) {
+            System.out.println(String.join(", ", getAllContacts()));
+
+        } else {
+            System.out.println(ERROR + "\n");
+        }
+
+    }
+
+    //По номеру
+    public void inputName(String number) {
+        System.out.println("Такого номера нет в телефонной книге.");
+        System.out.println("Введите имя для номера \"" + number + "\"");
+        String name = "";
+        while (!name.matches(REGEX_NAME))
+            name = scanner.nextLine();
+        addContact(number, name);
+        }
 
 
+
+
+    //По имени
+    public void inputNumber(String name) {
+        System.out.println("Такого имени в телефонной книге нет.");
+        System.out.println("Введите номер телефона для абонента \"" + name + "\"");
+        String phone = "";
+        while (!phone.matches(REGEX_PHONE))
+            phone = scanner.nextLine();
+        addContact(phone, name);
+
+    }
+
+    //Поиск по всем критериям
+    public boolean search(String searchValue) {
+        boolean result = false;
+        for (Map.Entry<String, TreeSet<String>> entry : mapPhoneBook.entrySet()) {
+            if (entry.getValue().contains(searchValue) || entry.getKey().equals(searchValue)) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+
+    // формат одного контакта "Имя - Телефон"
+    // если контакт не найдены - вернуть пустую строку
     public String getContactByPhone(String phone) {
         String result = "";
-        for (String newPhone : mapPhoneBook.keySet()){
-            if (phone.equals(newPhone)){
-                System.out.println("Такой номер уже есть в списке");
-                result = (mapPhoneBook.get(newPhone)) + " - " + newPhone.trim();
-            }
-            else {
-                System.out.println("");
-            }
-        }return result;
-        // формат одного контакта "Имя - Телефон"
-        // если контакт не найдены - вернуть пустую строку
-    }
+        for (Map.Entry<String, TreeSet<String>> entry : mapPhoneBook.entrySet()) {
+            if (entry.getValue().contains(phone)) {
+                System.out.println("Такой номер телефона найден:");
+                System.out.println("Вы хотите перезаписать имя абонента? YES|NO");
+                String newLine = scanner.nextLine();
+                if (newLine.equals("YES")){
+                    System.out.println("Введите новое имя: ");
+                    String newName = scanner.nextLine();
+                    mapPhoneBook.remove(entry.getKey());
+                    addContact(phone,newName);
+                    String value = String.join(",", entry.getValue());
+                    result = newName + " - " + value ;
+                }
+                if (newLine.equals("NO")){
+                    String key = entry.getKey();
+                    String value = String.join(",", entry.getValue());
+                    result = key + " - " + value;
+                }return result;
+                }
+            }return result;
+        }
 
 
-    public Set<String> getContactByName(String name) {
-        for (Map.Entry<String, String> entry : mapPhoneBook.entrySet()) {
-            if (entry.getValue().equals(name)) {
-                String string = "";
-                string = entry.getKey();
-                setPhoneBook.add(name + " - " + string);
+
+    // формат одного контакта "Имя - Телефон"
+    // если контакт не найдены - вернуть пустую строку
+    public String getContactByName(String name) {
+        String result = "";
+        for (Map.Entry<String, TreeSet<String>> entry : mapPhoneBook.entrySet()) {
+            if (entry.getKey().equals(name)) {
+                System.out.println("Такое имя найдено:");
+                String key = entry.getKey();
+                String value = String.join(", ", entry.getValue());
+                result = key + " - " + value;
+                break;
             }
         }
-        return setPhoneBook;
+
+        return result;
     }
+
 
     public Set<String> getAllContacts() {
-        for (Map.Entry<String, String> entry : mapPhoneBook.entrySet()) {
-
-            setPhoneBook.add(entry.getValue() + " - " + entry.getKey());
-        }
-        if (!setPhoneBook.isEmpty()) {
-            return setPhoneBook;
-        } else {
-            return new TreeSet<>();
-        }
+        Set<String> setPhoneBook = new TreeSet<>();
+        for (Map.Entry<String, TreeSet<String>> entry : mapPhoneBook.entrySet())
+             setPhoneBook.add(entry.getKey() + " - " + entry.getValue());
+        return setPhoneBook;
         // формат одного контакта "Имя - Телефон"
         // если контактов нет в телефонной книге - вернуть пустой TreeSet
     }
@@ -81,4 +145,5 @@ public class PhoneBook {
             String value = entry.getValue(); // получения ключа
         }
     */
+
 }
