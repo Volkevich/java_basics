@@ -18,42 +18,16 @@ public class PhoneBook {
                 temp.addAll(mapPhoneBook.get(name));
             temp.add(phone);
             mapPhoneBook.put(name, temp);
-            System.out.println("Контакт сохранен!");
+
         }
     }
 
 
     // проверьте корректность формата имени и телефона (отдельные методы для проверки)
     // если такой номер уже есть в списке, то перезаписать имя абонента
-    public void controller(String input) {
-
-        if (input.matches(REGEX_PHONE)) {
-            if (search(input)) {
-                System.out.println(String.join(", ", getContactByPhone(input)));
-                renameNumber(input);
-            } else {
-                inputName(input);
-            }
-
-        } else if (input.matches(REGEX_NAME)) {
-            if (search(input))
-                System.out.println(String.join(", ", getContactByName(input)));
-            else
-                inputNumber(input);
-
-        } else if (input.equals("LIST")) {
-            System.out.println(String.join(", ", getAllContacts()));
-
-        } else {
-            System.out.println(ERROR + "\n");
-        }
-
-    }
 
     //По номеру
     public void inputName(String number) {
-        System.out.println("Такого номера нет в телефонной книге.");
-        System.out.println("Введите имя для номера \"" + number + "\"");
         String name = "";
         while (!name.matches(REGEX_NAME))
             name = scanner.nextLine();
@@ -63,8 +37,6 @@ public class PhoneBook {
 
     //По имени
     public void inputNumber(String name) {
-        System.out.println("Такого имени в телефонной книге нет.");
-        System.out.println("Введите номер телефона для абонента \"" + name + "\"");
         String phone = scanner.nextLine();
         if (phone.matches(REGEX_PHONE)) {
             for (Map.Entry<String, TreeSet<String>> entry : mapPhoneBook.entrySet()) {
@@ -96,7 +68,6 @@ public class PhoneBook {
         String result = "";
         for (Map.Entry<String, TreeSet<String>> entry : mapPhoneBook.entrySet()) {
             if (entry.getValue().contains(phone)) {
-                System.out.println("Такой номер телефона найден:");
                 String key = entry.getKey();
                 String value = String.join(",", entry.getValue());
                 result = key + " - " + value;
@@ -108,7 +79,6 @@ public class PhoneBook {
 
 
     public void renameNumber(String number) {
-        System.out.println("Введите новое имя для номера \"" + number + "\":");
         String newName = "";
         while (!newName.matches(REGEX_NAME))
             newName = scanner.nextLine();

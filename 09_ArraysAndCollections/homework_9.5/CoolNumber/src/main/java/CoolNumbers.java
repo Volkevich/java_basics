@@ -6,6 +6,7 @@ import java.util.TreeSet;
 public class CoolNumbers {
 
     public static List<String> generateCoolNumbers() {
+
         return Collections.emptyList();
     }
 
