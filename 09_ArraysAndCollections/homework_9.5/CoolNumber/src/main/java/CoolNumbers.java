@@ -3,39 +3,70 @@ import java.util.*;
 public class CoolNumbers {
 
     public static List<String> generateCoolNumbers() {
-        ArrayList<String> arrayList = new ArrayList<>();
-        String regex = "[АВЕКМНОРСТУХ][0-9]{3}[АВЕКМНОРСТУХ]{2}[0-9]{3}";
-        String[] letters = {"А", "В", "Е", "К", "М", "Н", "О", "Р", "С", "Т", "У", "Х"};
+        ArrayList<String> coolNumbersList = new ArrayList<>();
 
-        for (int i = 0;i < letters.length;i++) {
-            for (int a = 0; a < 12; a++) {
-                for (int r = 1; r < 199; r++) {
-                    String region = String.valueOf(r);
-                    String randomLetters = letters[i];
-                    int randomNumbers = (int) (Math.random() * 9);
-                    if (randomNumbers == 000) {
-                        randomNumbers = randomNumbers + 1;
-                    }
-                    if (r < 10) {
-                        region = "0" + region;
-                    }
-                    String number = String.format("%s%d%d%d%s%s%s", randomLetters,
-                            randomNumbers, randomNumbers, randomNumbers, randomLetters, randomLetters, region);
-                    arrayList.add(number);
-                    Collections.sort(arrayList);
-                }
+        String coolNumber = "";//XNNNYZR — пример: A111BC197, У777HC66.
+
+        ArrayList<String> oneLetters = new ArrayList<>();// ОДНА БУКВА
+        oneLetters.add("А");
+        oneLetters.add("В");
+        oneLetters.add("Е");
+        oneLetters.add("К");
+        oneLetters.add("М");
+        oneLetters.add("Н");
+        oneLetters.add("О");
+        oneLetters.add("Р");
+        oneLetters.add("С");
+        oneLetters.add("Т");
+        oneLetters.add("У");
+        oneLetters.add("Х");
+        ArrayList<String> twoLetters = new ArrayList<>();//ДВЕ БУКВЫ
+        for (String two : oneLetters)
+            for (String one : oneLetters)
+                twoLetters.add(two + one);
+
+        ArrayList<String> oneNumbers = new ArrayList<>();//ТРИ ЦИФРЫ
+        for (int i = 1; i < 999; i++) {
+            if (i < 10) {
+                oneNumbers.add("00" + i);
+            } else if (i < 100) {
+                oneNumbers.add("0" + i);
+            } else {
+                oneNumbers.add(String.valueOf(i));
             }
         }
-            System.out.println(String.join(";\n",arrayList) );
-        return arrayList;
+        ArrayList<String> regionNumber = new ArrayList<>();
+        for (int r = 1; r < 199; r++) {
+            regionNumber.add(String.valueOf(r));
+        }
+        for (String oneLet : oneLetters) {
+            for (String twoLet : twoLetters) {
+                for (String treNumb : oneNumbers) {
+                    for (String regNum : regionNumber) {
+                        coolNumber = oneLet + treNumb + twoLet + regNum;
+                        int[] cool = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+                        for (int coolNumb : cool) {
+                            if (coolNumber.split(String.valueOf(coolNumb)).length == 4) {
+                                coolNumbersList.add(coolNumber);
+                                Collections.sort(coolNumbersList);
+                                System.out.println(coolNumber);
+                                break;
+                            }
+                        }
+                    }
+                }
+
+
+
+            }
+        }return coolNumbersList;
+
     }
 
     public static boolean bruteForceSearchInList(List<String> list, String number) {
-        ArrayList<String> arrayList = new ArrayList<>();
-        Collections.sort(arrayList);
-        Collections.binarySearch(arrayList,"A111BC197");
-        Long start = System.nanoTime();
-        System.out.println(start);
+
+
+
 
         return false;
     }
