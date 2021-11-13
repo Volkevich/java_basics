@@ -39,51 +39,66 @@ public class CoolNumbers {
         for (int r = 1; r < 199; r++) {
             regionNumber.add(String.valueOf(r));
         }
+
         for (String oneLet : oneLetters) {
             for (String twoLet : twoLetters) {
                 for (String treNumb : oneNumbers) {
                     for (String regNum : regionNumber) {
                         coolNumber = oneLet + treNumb + twoLet + regNum;
-                        int[] cool = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+                        int[] cool = {1,2,3,4,5,6, 7,8, 9};
                         for (int coolNumb : cool) {
-                            if (coolNumber.split(String.valueOf(coolNumb)).length == 4) {
+                            if (coolNumber.split(String.valueOf(coolNumb)).length - 1 == 3) {
                                 coolNumbersList.add(coolNumber);
-                                Collections.sort(coolNumbersList);
-                                System.out.println(coolNumber);
                                 break;
                             }
                         }
+                        if (coolNumbersList.size() >= 2000001)
+                            break;
                     }
+                    if (coolNumbersList.size() >= 2000001)
+                        break;
                 }
-
-
-
+                if (coolNumbersList.size() >= 2000001)
+                    break;
             }
-        }return coolNumbersList;
-
+            if (coolNumbersList.size() >= 2000001)
+                break;
+        }
+        System.out.println("Список сформирован!");
+        return coolNumbersList;
     }
 
     public static boolean bruteForceSearchInList(List<String> list, String number) {
-
-
-
-
+        for (String brut : list)
+            if (brut.contains(number)) {
+                return true;
+            }
         return false;
     }
 
     public static boolean binarySearchInList(List<String> sortedList, String number) {
+        Collections.sort(sortedList);
+        if (Collections.binarySearch(sortedList,number) >=0 ){
+            return true;
+        }
 
         return false;
     }
 
 
     public static boolean searchInHashSet(HashSet<String> hashSet, String number) {
-
+        for (String hash : hashSet)
+            if (hash.contains(number)) {
+                return true;
+            }
         return false;
     }
 
     public static boolean searchInTreeSet(TreeSet<String> treeSet, String number) {
-
+        for (String tree : treeSet)
+            if (tree.contains(number)) {
+                return true;
+            }
         return false;
     }
 
