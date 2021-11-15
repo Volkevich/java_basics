@@ -21,10 +21,11 @@ public class CoolNumbers {
         oneLetters.add("У");
         oneLetters.add("Х");
         ArrayList<String> twoLetters = new ArrayList<>();//ДВЕ БУКВЫ
-        for (String two : oneLetters)
-            for (String one : oneLetters)
+        for (String two : oneLetters) {
+            for (String one : oneLetters) {
                 twoLetters.add(two + one);
-
+            }
+        }
         ArrayList<String> oneNumbers = new ArrayList<>();//ТРИ ЦИФРЫ
         for (int i = 1; i < 999; i++) {
             if (i < 10) {
@@ -64,7 +65,7 @@ public class CoolNumbers {
             if (coolNumbersList.size() >= 2000001)
                 break;
         }
-        System.out.println("Список сформирован!");
+
         return coolNumbersList;
     }
 
@@ -77,7 +78,6 @@ public class CoolNumbers {
     }
 
     public static boolean binarySearchInList(List<String> sortedList, String number) {
-        Collections.sort(sortedList);
         if (Collections.binarySearch(sortedList,number) >=0 ){
             return true;
         }
@@ -87,8 +87,7 @@ public class CoolNumbers {
 
 
     public static boolean searchInHashSet(HashSet<String> hashSet, String number) {
-        for (String hash : hashSet)
-            if (hash.contains(number)) {
+            if (hashSet.contains(number)) {
                 return true;
             }
         return false;
