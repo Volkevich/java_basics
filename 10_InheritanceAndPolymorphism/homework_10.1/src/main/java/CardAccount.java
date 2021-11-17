@@ -1,21 +1,20 @@
 public class CardAccount extends BankAccount {
-    protected double checkCard;
     public double getAmount() {
-        return  checkCard;
+        return  super.check;
     }
     public void put(double amountToPut) {
         if (amountToPut > 0.0){
-           checkCard += amountToPut;
+           super.check += amountToPut;
         }
 
     }
     public void take(double amountToTake) {
         double commission = ((amountToTake / 100) * 1);
-        if ((checkCard > 0.0)&&(amountToTake < checkCard)){
-            System.out.println("На счете Card Account - " + checkCard + " руб.");
+        if ((super.check > 0.0)&&(amountToTake < super.check)){
+            System.out.println("На счете - " + super.check + " руб.");
             System.out.println("Вы хотите снять - " + amountToTake+ " руб.");
             System.out.println("Комиссия за снятие - " + commission + " руб.");
-            checkCard -=  (amountToTake) + commission;
+            super.check -=  (amountToTake) + commission;
         }else {
             System.out.println("Сумма на счете не соответствует ожидаемой");
         }

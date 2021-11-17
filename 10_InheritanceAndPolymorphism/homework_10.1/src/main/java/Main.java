@@ -4,9 +4,8 @@ public class Main {
         CardAccount cardAccount = new CardAccount();
         DepositAccount depositAccount = new DepositAccount();
         BankAccount accountOleg = new BankAccount();
-        accountMax.put(123);
-        accountMax.put(3333);
-        accountMax.send(accountOleg,222);
-        System.out.println(accountOleg.getAmount());
+        cardAccount.put(12321);
+        cardAccount.take(100);
+        System.out.println(cardAccount.getAmount());
     }
 }
