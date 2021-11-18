@@ -10,7 +10,13 @@ public class Main {
 
         DepositAccount depositAccMax = new DepositAccount();
         DepositAccount depositAccOleg = new DepositAccount();
-        while (true) {
+
+        cardAccMax.put(1221);
+        System.out.println(cardAccMax.getAmount());
+        cardAccMax.send(cardAccOleg,222);
+        System.out.println(cardAccOleg.getAmount());
+
+        /*while (true) {
             System.out.println("Выберите пользователя счёта: ");
             System.out.println("1. Максим");
             System.out.println("2. Олег");
@@ -20,7 +26,7 @@ public class Main {
 
             switch (numberName) {
                 case 1: {
-                    System.out.println(" Вы выбрали счёт пользователя Максим, его баланс - " + accountMax.getAmount());
+                    System.out.println(" Вы выбрали счёт пользователя Максим");
                     System.out.println(" Выберите необходимый счёт: ");
                     System.out.println("1. Карт счет");
                     System.out.println("2. Депозитный счет");
@@ -64,8 +70,8 @@ public class Main {
                     break;
                 }
             }
-        }
-
+        }*/
     }
+
 
 }
