@@ -25,8 +25,8 @@ public class BankAccount {
   public boolean send(BankAccount receiver, double amount){
 
     if ((amount < check) && (amount > 0.0)){
+      System.out.println(amount + " руб. успешно переведено на счёт");
        receiver.put(amount);
-
     }
 
     return true;
