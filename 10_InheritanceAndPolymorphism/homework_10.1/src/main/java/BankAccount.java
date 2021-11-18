@@ -3,12 +3,12 @@ public class BankAccount {
 
   protected double check;
 
-  public double getAmount() {
+  protected double getAmount() {
     // верните значение количества денег не счету
     return check;
   }
 
-  public boolean put(double amountToPut) {
+  protected boolean put(double amountToPut) {
     if (amountToPut > 0.0) {
       check += amountToPut;
       return true;
@@ -19,7 +19,7 @@ public class BankAccount {
     // метод зачисляет деньги на счет
   }
 
-  public boolean take(double amountToTake) {
+  protected boolean take(double amountToTake) {
     if ((amountToTake > 0.0) && (amountToTake <= check)) {
       check -= amountToTake;
       return true;
@@ -30,7 +30,7 @@ public class BankAccount {
     // метод списывает деньги со счета
   }
 
-  public boolean send(BankAccount receiver, double amount) {
+  protected boolean send(BankAccount receiver, double amount) {
     if (take(amount)) {
       receiver.put(amount);
       return true;

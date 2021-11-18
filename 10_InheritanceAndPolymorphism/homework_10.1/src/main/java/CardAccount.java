@@ -12,6 +12,7 @@ public class CardAccount extends BankAccount {
     // метод зачисляет деньги на счет
     public boolean take(double amountToTake) {
         return super.take(amountToTake * 1.01);
+
     }
 
     public boolean send(BankAccount receiver, double amount) {

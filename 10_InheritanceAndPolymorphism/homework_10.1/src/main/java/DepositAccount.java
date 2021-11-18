@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.Calendar;
 
 public class DepositAccount extends BankAccount {
-    LocalDate lastIncome;
+    private LocalDate lastIncome;
 
     public double getAmount() {
         return super.check;
