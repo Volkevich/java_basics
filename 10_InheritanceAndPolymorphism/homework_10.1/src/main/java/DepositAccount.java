@@ -26,7 +26,9 @@ public class DepositAccount extends BankAccount {
 
         if ((amount < super.check) && (amount > 0.0)) {
             System.out.println(amount + " руб. успешно переведено на счёт");
-            receiver.put(amount);
+            if (LocalDate.now().isAfter(lastIncome.plusMonths(1))) {
+                receiver.put(amount * 1.01);
+            }
         }
 
         return true;

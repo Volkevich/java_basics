@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
         BankAccount accountMax = new BankAccount();
@@ -11,67 +9,23 @@ public class Main {
         DepositAccount depositAccMax = new DepositAccount();
         DepositAccount depositAccOleg = new DepositAccount();
 
-        cardAccMax.put(1221);
-        System.out.println(cardAccMax.getAmount());
-        cardAccMax.send(cardAccOleg,222);
-        System.out.println(cardAccOleg.getAmount());
 
-        /*while (true) {
-            System.out.println("Выберите пользователя счёта: ");
-            System.out.println("1. Максим");
-            System.out.println("2. Олег");
-            Scanner scanner = new Scanner(System.in);
-            String name = scanner.nextLine();
-            int numberName = Integer.valueOf(name);
+        accountMax.put(200);
+        cardAccMax.put(300);
+        cardAccMax.take(100);
+        cardAccMax.send(cardAccOleg,100);
+        depositAccMax.put(1221);
+        depositAccMax.put(1111);
 
-            switch (numberName) {
-                case 1: {
-                    System.out.println(" Вы выбрали счёт пользователя Максим");
-                    System.out.println(" Выберите необходимый счёт: ");
-                    System.out.println("1. Карт счет");
-                    System.out.println("2. Депозитный счет");
-                    String shet = scanner.nextLine();
-                    int numberShet = Integer.valueOf(shet);
-                    switch (numberShet) {
-                        case 1: {
-                            System.out.println("Вы выбрали карт счёт");
-                            System.out.println("Выберите необходимую операцию: ");
-                            System.out.println("1. Пополнение счета");
-                            System.out.println("2. Списание денежных средств");
-                            System.out.println("3. Перевод денежных средств");
-                            String numberOper = scanner.nextLine();
-                            int numbOper = Integer.valueOf(numberOper);
-                            switch (numbOper) {
-                                case 1: {
-                                    System.out.println("Введите сумму пополнения: ");
-                                    String summ = scanner.nextLine();
-                                    double sumDouble = Integer.valueOf(summ);
-                                    cardAccMax.put(sumDouble);
-                                    System.out.println("Баланс успешно пополнен");
-                                    break;
-                                }
 
-                            }
-                            break;
-                        }
-                        case 2: {
-                            System.out.println("Вы выбрали депозитный счёт");
-                            System.out.println("Выберите необходимую операцию: ");
-                            System.out.println("1. Пополнение счета");
-                            System.out.println("2. Списание денежных средств");
-                            System.out.println("3. Перевод денежных средств");
-                            break;
-                        }
-                    }
-                    break;
-                }
-                case 2: {
-                    System.out.println(" Вы выбрали счёт пользователя Олега, его баланс - " + accountOleg.getAmount());
-                    break;
-                }
-            }
-        }*/
+        System.out.println(cardAccMax.getAmount() + " -  карт счет Максима");
+        System.out.println(cardAccOleg.getAmount() + " -  карт счёт Олега");
+        System.out.println(accountMax.getAmount() + " -  счёт Максима");
+        System.out.println(accountOleg.getAmount() + " -  счёт Олега");
+        System.out.println(depositAccMax.getAmount() + " - депозитный счёт Максима");
+        System.out.println(depositAccOleg.getAmount() + " - депозитный счёт Олега");
     }
-
-
 }
+
+
+
