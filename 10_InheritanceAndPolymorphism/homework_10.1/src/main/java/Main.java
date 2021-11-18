@@ -10,32 +10,62 @@ public class Main {
 
         DepositAccount depositAccMax = new DepositAccount();
         DepositAccount depositAccOleg = new DepositAccount();
+        while (true) {
+            System.out.println("Выберите пользователя счёта: ");
+            System.out.println("1. Максим");
+            System.out.println("2. Олег");
+            Scanner scanner = new Scanner(System.in);
+            String name = scanner.nextLine();
+            int numberName = Integer.valueOf(name);
 
-        System.out.println("Выберите пользователя счёта: ");
-        System.out.println("1. Максим");
-        System.out.println("2. Олег");
-        Scanner scanner = new Scanner(System.in);
-        String name = scanner.nextLine();
-        int numberName = Integer.valueOf(name);
-        switch (numberName){
-            case 1 :
-                System.out.println(" Вы выбрали счёт пользователя Максим, его баланс - " + accountMax.getAmount());
-                System.out.println(" Выберите необходимый счёт: ");
-                System.out.println("1. Карт счет");
-                System.out.println("2. Депозитный счет");
-                String chet = scanner.nextLine();
-                int numberChet = Integer.valueOf(chet);
-                switch (numberChet){
-                    case 1:
-                        System.out.println("Вы выбрали карт счёт");
-                        System.out.println("Выберите необходимую операцию: ");
-                        System.out.println("1. Пополнение счета");
-                        System.out.println("2. Списание денежных средств");
-                        System.out.println("3. Перевод денежных средств");
+            switch (numberName) {
+                case 1: {
+                    System.out.println(" Вы выбрали счёт пользователя Максим, его баланс - " + accountMax.getAmount());
+                    System.out.println(" Выберите необходимый счёт: ");
+                    System.out.println("1. Карт счет");
+                    System.out.println("2. Депозитный счет");
+                    String shet = scanner.nextLine();
+                    int numberShet = Integer.valueOf(shet);
+                    switch (numberShet) {
+                        case 1: {
+                            System.out.println("Вы выбрали карт счёт");
+                            System.out.println("Выберите необходимую операцию: ");
+                            System.out.println("1. Пополнение счета");
+                            System.out.println("2. Списание денежных средств");
+                            System.out.println("3. Перевод денежных средств");
+                            String numberOper = scanner.nextLine();
+                            int numbOper = Integer.valueOf(numberOper);
+                            switch (numbOper) {
+                                case 1: {
+                                    System.out.println("Введите сумму пополнения: ");
+                                    String summ = scanner.nextLine();
+                                    double sumDouble = Integer.valueOf(summ);
+                                    cardAccMax.put(sumDouble);
+                                    System.out.println("Баланс успешно пополнен");
+                                    break;
+                                }
+
+                            }
+                            break;
+                        }
+                        case 2: {
+                            System.out.println("Вы выбрали депозитный счёт");
+                            System.out.println("Выберите необходимую операцию: ");
+                            System.out.println("1. Пополнение счета");
+                            System.out.println("2. Списание денежных средств");
+                            System.out.println("3. Перевод денежных средств");
+                            break;
+                        }
+                    }
+                    break;
                 }
-            case 2 :
-                System.out.println(accountOleg.getAmount() + " остаток на счету Олега");
+                case 2: {
+                    System.out.println(" Вы выбрали счёт пользователя Олега, его баланс - " + accountOleg.getAmount());
+                    break;
+                }
+            }
         }
+
     }
 
 }

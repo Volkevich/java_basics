@@ -2,6 +2,7 @@ public class CardAccount extends BankAccount {
     public double getAmount() {
         return  super.check;
     }
+
     public void put(double amountToPut) {
         if (amountToPut > 0.0){
            super.check += amountToPut;
@@ -18,6 +19,15 @@ public class CardAccount extends BankAccount {
         }else {
             System.out.println("Сумма на счете не соответствует ожидаемой");
         }
+    }
+    public boolean send(BankAccount receiver, double amount){
+
+        if ((amount < super.check) && (amount > 0.0)){
+            System.out.println(amount + " руб. успешно переведено на счёт");
+            receiver.put(amount);
+        }
+
+        return true;
     }
     // не забывайте, обращаться к методам и конструкторам родителя
     // необходимо используя super, например, super.put(10D);
