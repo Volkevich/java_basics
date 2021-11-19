@@ -7,11 +7,13 @@ public class IndividualBusinessman extends Client {
     @Override
     public void put(double amountToPut) {
         if (amountToPut > 0.0) {
-            if (amountToPut < 1000){
-                check += (amountToPut) - (amountToPut * 1.01);
+            if (amountToPut < 1000) {
+                final double percent = amountToPut * 1.01;
+                check += amountToPut - percent;
             }
-            if (amountToPut >= 1000){
-                check += (amountToPut) - (amountToPut * 1.005);
+            if (amountToPut >= 1000) {
+                final double percent = amountToPut * 1.005;
+                check += amountToPut - percent;
             }
             check += amountToPut;
         }

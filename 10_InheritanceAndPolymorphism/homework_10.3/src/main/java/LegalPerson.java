@@ -14,7 +14,8 @@ public class LegalPerson extends Client {
     @Override
     public void take(double amountToTake) {
         if ((amountToTake > 0.0) && (amountToTake <= check)) {
-            check -= amountToTake * 1.01;
+            final double pro = amountToTake * 1.01;
+            check -= pro;
         }
     }
 }

@@ -3,12 +3,6 @@ public class CardAccount extends BankAccount {
         return super.getAmount();
     }
 
-    public boolean put(double amountToPut) {
-
-        return super.put(amountToPut);
-    }
-
-
     // метод зачисляет деньги на счет
     public boolean take(double amountToTake) {
         return super.take(amountToTake * 1.01);
