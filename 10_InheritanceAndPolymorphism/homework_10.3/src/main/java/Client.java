@@ -5,11 +5,11 @@ public abstract class Client {
 
     public abstract void put(double amountToPut);
 
-    //TODO: реализуйте метод и удалите todo
+
 
 
     public abstract void take(double amountToTake);
-    //TODO: реализуйте метод и удалите todo
+
 
 
 }
