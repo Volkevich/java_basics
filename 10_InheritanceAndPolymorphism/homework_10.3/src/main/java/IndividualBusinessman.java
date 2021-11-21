@@ -1,4 +1,6 @@
 public class IndividualBusinessman extends Client {
+
+
     @Override
     public double getAmount() {
         return check;
@@ -6,13 +8,13 @@ public class IndividualBusinessman extends Client {
 
     @Override
     public void put(double amountToPut) {
-        if (amountToPut > 0.0) {
+        if (amountToPut > PUT_LIMIT) {
             if (amountToPut < 1000) {
-                final double percent = amountToPut * 1.01;
+                final double percent = amountToPut * (1 + PERCENT_MORE_PUT_LIMIT);
                 check += amountToPut - percent;
             }
             if (amountToPut >= 1000) {
-                final double percent = amountToPut * 1.005;
+                final double percent = amountToPut * (1 + PERCENT_MORE_PUT_LIMIT_TWO);
                 check += amountToPut - percent;
             }
             check += amountToPut;
@@ -21,8 +23,6 @@ public class IndividualBusinessman extends Client {
 
     @Override
     public void take(double amountToTake) {
-        if ((amountToTake > 0.0) && (amountToTake <= check)) {
-            check -= amountToTake;
-        }
+        super.take(amountToTake);
     }
 }
