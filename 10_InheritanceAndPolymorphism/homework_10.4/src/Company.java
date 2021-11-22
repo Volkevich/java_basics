@@ -1,58 +1,57 @@
 import java.util.*;
 
 public class Company {
-    private final List<Employee> employees = new ArrayList<>();
+    private final List<Employee> employees = new ArrayList<>(); //список сотрудников
 
 
-    protected void hire(Employee employeOne) {
+    protected void hire(Employee employeOne) { // найм одного сотрудника
         this.employees.add(employeOne);
     }
 
-    protected void hireAll(Collection<Employee> employAll) {
+    protected void hireAll(Collection<Employee> employAll) { // принять на работу список сотрудников
         this.employees.addAll(employAll);
     }
 
-    protected void fire(Employee employee) {
-        employees.remove(employee);
+    protected void fire(Employee employee) { //увольнения сотрудников
+        this.employees.remove(employee);
     }
 
-    protected static int getIncome() {
-        return 1500000;
+    protected static int getIncome() { //значение дохода компании
+        return 15000000;
     }
 
-    public List<Employee> getTopSalaryStaff(int count) {
-        return getFilteredLimitedList(count, new Comparator<Employee>() {
-            public int compare(Employee o1, Employee o2) {
-                return o2.getMonthSalary() - o1.getMonthSalary();
-            }
-        });
-    }
-
-    public List<Employee> getLowestSalaryStaff(int count) {
-        return getFilteredLimitedList(count, new Comparator<Employee>() {
-            public int compare(Employee o1, Employee o2) {
-                return o1.getMonthSalary() - o2.getMonthSalary();
-            }
-        });
-    }
-
-    private List<Employee> getFilteredLimitedList(int count, Comparator<Employee> comparator) {
-        List<Employee> copyList = new ArrayList<Employee>(employees);
-        Collections.sort(copyList, comparator);
-        List<Employee> result = new ArrayList<Employee>();
+    protected List<Employee> getFilteredLimitedList(int count, Comparator<Employee> employeeComparator) {
+        List<Employee> employeeListCopy = new ArrayList<>(employees);
+        Collections.sort(employeeListCopy, employeeComparator);
+        List<Employee> employeesResult = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            result.add(copyList.get(i));
+            employeesResult.add(employeeListCopy.get(i));
         }
-        return result;
+        return employeesResult;
     }
 
-    public int countEmployees() {
+    protected List<Employee> getTopSalaryStaff(int count) {
+        return getFilteredLimitedList(count, (o1, o2) -> o2.getMonthSalary() - o1.getMonthSalary());
+    }
+
+    protected List<Employee> getLowestSalaryStaff(int count) {
+        return getFilteredLimitedList(count, Comparator.comparingInt(Employee::getMonthSalary));
+    }
+
+    protected int countEmployees() {
         return employees.size();
     }
-
-    public List<Employee> getEmployees() {
+    protected List<Employee> getEmployees(){
         return employees;
     }
 
 
 }
+
+
+
+
+
+
+
+
