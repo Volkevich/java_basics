@@ -1,9 +1,15 @@
-public class Operator implements Employee {
-    private static final int FIX_SAL = 36500;
+public class Operator extends Staff {
+    protected static int FIX_SALARY = 58000;
 
 
     @Override
     public int getMonthSalary() {
-        return FIX_SAL;
+        return FIX_SALARY;
     }
+
+    @Override
+    public int getBONUS() {
+        return 0;
+    }
+
 }
