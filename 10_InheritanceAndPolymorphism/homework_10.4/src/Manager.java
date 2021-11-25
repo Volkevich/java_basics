@@ -1,13 +1,18 @@
-public class Manager implements Employee {
+public class Manager extends Staff {
 
-    private static final int FIX_SALARY = 58000;
-    private final int earningsForCompany;
+    protected static final int FIX_SALARY = 58000;
 
-    public Manager() {
-        this.earningsForCompany = (int) (Math.random() * (145000 - 115000)) + 115000;
+
+    @Override
+    public int getBONUS() {
+        return BONUS_MANAGER;
     }
 
+    @Override
     public int getMonthSalary() {
-        return FIX_SALARY + (int) (earningsForCompany * 0.05);
+        return FIX_SALARY + getBONUS();
     }
+
+
+
 }
