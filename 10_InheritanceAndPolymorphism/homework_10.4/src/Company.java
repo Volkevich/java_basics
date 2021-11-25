@@ -17,7 +17,7 @@ public class Company {
     }
 
     protected static int getIncome() { //значение дохода компании
-        return 15000000;
+        return Manager.BONUS_MANAGER;
     }
 
     protected List<Employee> getFilteredLimitedList(int count, Comparator<Employee> employeeComparator) {
@@ -47,11 +47,4 @@ public class Company {
 
 
 }
-
-
-
-
-
-
-
 
