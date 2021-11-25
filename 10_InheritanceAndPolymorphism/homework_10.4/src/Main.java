@@ -12,7 +12,7 @@ public class Main {
     public static void printLowestSalaries(Company company) {
         System.out.println("Самые низкие зарплаты в компании CocaCola: ");
         for (Employee employee : company.getLowestSalaryStaff(30)) {
-                System.out.println(employee.getMonthSalary() + " руб.");
+            System.out.println(employee.getMonthSalary() + " руб.");
         }
     }
 
