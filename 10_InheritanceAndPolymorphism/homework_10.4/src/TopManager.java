@@ -1,9 +1,13 @@
-public class TopManager implements Employee {
-    private static final int FIX_SAL = 70000;
+public class TopManager extends Staff {
+    protected static final int FIX_SALARY = 58000;
 
+    @Override
+    public int getBONUS() {
+        return BONUS_TOP_MANAGER;
+    }
 
     @Override
     public int getMonthSalary() {
-        return FIX_SAL + Company.getIncome() > 10000000 ? (int) (FIX_SAL * 1.5) : 0;
+        return FIX_SALARY + getBONUS();
     }
 }
