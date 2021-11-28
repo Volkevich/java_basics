@@ -5,21 +5,29 @@ public class Main {
         printLowestSalaries(CocaCola);
         printHighSalaries(CocaCola);
         fireHalfEmployees(CocaCola);
+        printSalariesOperator(CocaCola);
+
 
 
     }
+    public static void printSalariesOperator(Company company) {
+        System.out.println("Зарплата Оператора: ");
+        Employee operator = new Operator();
+        System.out.println(operator.getSalary());
+    }
+
 
     public static void printLowestSalaries(Company company) {
         System.out.println("Самые низкие зарплаты в компании CocaCola: ");
         for (Employee employee : company.getLowestSalaryStaff(30)) {
-            System.out.println(employee.getMonthSalary() + " руб.");
+            System.out.println(employee.getSalary() + " руб.");
         }
     }
 
     public static void printHighSalaries(Company company) {
         System.out.println("Самые высокие зарплаты в компании CocaCola: ");
         for (Employee employee : company.getTopSalaryStaff(12)) {
-            System.out.println(employee.getMonthSalary()+ " руб.");
+            System.out.println(employee.getSalary()+ " руб.");
         }
     }
 
