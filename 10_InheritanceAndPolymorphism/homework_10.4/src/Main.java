@@ -9,10 +9,11 @@ public class Main {
 
 
 
+
     }
     public static void printSalariesOperator(Company company) {
         System.out.println("Зарплата Оператора: ");
-        Employee operator = new Operator();
+        Employee operator = new Operator(company);
         System.out.println(operator.getSalary());
     }
 
@@ -33,15 +34,15 @@ public class Main {
 
     private static void hireEmployees(Company company) {
         for (int i = 0; i < 180; i++) {
-            Employee operator = new Operator();
+            Employee operator = new Operator(company);
             company.hire(operator);
         }
         for (int i = 0; i < 80; i++) {
-            Employee manager = new Manager();
+            Employee manager = new Manager(company);
             company.hire(manager);
         }
         for (int i = 0; i < 10; i++) {
-            Employee topManager = new TopManager();
+            Employee topManager = new TopManager(company);
             company.hire(topManager);
         }
         System.out.println("Добавлено сотрудников компании: " + company.countEmployees());
