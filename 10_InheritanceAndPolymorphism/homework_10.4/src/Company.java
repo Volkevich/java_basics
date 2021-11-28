@@ -17,7 +17,7 @@ public class Company {
     }
 
     protected static int getIncome() { //значение дохода компании
-        return Manager.BONUS_MANAGER;
+        return TopManager.FIX_SALARY;
     }
 
     protected List<Employee> getFilteredLimitedList(int count, Comparator<Employee> employeeComparator) {
@@ -31,12 +31,16 @@ public class Company {
     }
 
     protected List<Employee> getTopSalaryStaff(int count) {
-        return getFilteredLimitedList(count, (o1, o2) -> o2.getMonthSalary() - o1.getMonthSalary());
+        return getFilteredLimitedList(count, (o1, o2) -> o2.getSalary() - o1.getSalary());
     }
 
     protected List<Employee> getLowestSalaryStaff(int count) {
-        return getFilteredLimitedList(count, Comparator.comparingInt(Employee::getMonthSalary));
+        return getFilteredLimitedList(count, Comparator.comparingInt(Employee::getSalary));
     }
+    protected int getSalaryOperator() {
+        return Staff.FIX_SALARY;
+    }
+
 
     protected int countEmployees() {
         return employees.size();
