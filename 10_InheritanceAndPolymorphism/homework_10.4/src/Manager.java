@@ -1,6 +1,6 @@
 public class Manager extends Staff {
 
-    protected static final int FIX_SALARY = 58000;
+    protected final int FIX_SALARY = 58000;
     private final int salaryManager = FIX_SALARY + getBonus();
 
     public Manager(Company company) {
