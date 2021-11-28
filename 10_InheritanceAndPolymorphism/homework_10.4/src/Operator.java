@@ -1,9 +1,9 @@
 public class Operator extends Staff {
-    protected static int FIX_SALARY = 58000;
 
-
+    private final int bonus = 10000;
     @Override
-    public int getMonthSalary() {
-        return getSALARY_OPERATOR();
+    protected final int getBONUS() {
+        return super.bonus;
     }
+
 }
