@@ -1,20 +1,18 @@
 public abstract class Staff implements Employee {
-    protected static final int FIX_SALARY = 58000;
-    protected static int  BONUS_MANAGER = (int) (Math.random() * (145000 - 115000)) + 115000;
-    protected static int BONUS_TOP_MANAGER = Company.getIncome() > 10_000_000 ? (int) (FIX_SALARY * 1.5) : 0;
+    protected static final int FIX_SALARY = 30000;
+    protected int bonus = 5000;
 
-
-    public abstract  int getBONUS();
-
-
-    public int getSALARY() {
-        return FIX_SALARY + BONUS_MANAGER;
+    @Override
+    public int getSalary() {
+        return getFixSalary() + getBONUS();
     }
 
-    public int getSALARY_TOP_MANAGER() {
-        return FIX_SALARY + BONUS_TOP_MANAGER;
+    protected abstract int getBONUS();
+
+
+    protected int getFixSalary() {
+        return FIX_SALARY;
     }
+
 
 }
-
-
