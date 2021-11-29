@@ -1,10 +1,10 @@
 public class TopManager extends Staff {
-    protected final int FIX_SALARY = 58000;
+
+    protected static final int FIX_SALARY = 100_000;
 
     public TopManager(Company company) {
         super(company);
     }
-
 
     @Override
     public int getSalary() {
@@ -13,6 +13,6 @@ public class TopManager extends Staff {
 
     @Override
     public int getBonus() {
-        return Company.getIncome() > 10_000_000 ? (int) (FIX_SALARY * 1.5) : 0;
+        return company.getIncome() > 10_000_000 ? (int) (company.getIncome() * company.getTopManagerPercent()) : 0;
     }
 }
