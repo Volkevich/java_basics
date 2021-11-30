@@ -1,18 +1,20 @@
 public class Manager extends Staff {
 
-    protected final int FIX_SALARY = 58000;
-    private final int salaryManager = FIX_SALARY + getBonus();
+    protected static final int FIX_SALARY = 70_000;
+    private final double managerIncome;
 
     public Manager(Company company) {
         super(company);
+        this.managerIncome = (Math.random() * (145000 - 115000)) + 115000;
     }
 
+    @Override
     public int getSalary() {
-        return salaryManager;
+        return FIX_SALARY + getBonus();
     }
 
     @Override
     public int getBonus() {
-        return (int) (Math.random() * (145000 - 115000)) + 115000;
+        return (int) (managerIncome * company.getManagerPercent());
     }
 }
