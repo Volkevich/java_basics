@@ -8,7 +8,7 @@ public class CustomerStorage {
         storage = new HashMap<>();
     }
 
-    public void addCustomer(String data) {
+    public void addCustomer(String data) throws CustomerAddException {
         final int INDEX_NAME = 0;
         final int INDEX_SURNAME = 1;
         final int INDEX_EMAIL = 2;
@@ -19,16 +19,15 @@ public class CustomerStorage {
         String[] components = data.split("\\s+");
 
         if (components.length != 4) {
-            throw new IllegalArgumentException("Wrong Format: add Василий Петров \" +\n" +
-                    "\"vasily.petrov@gmail.com +79215637722\"");
+            throw new CustomerAddException("Wrong Format length!!!");
         }
         String name = components[INDEX_NAME] + " " + components[INDEX_SURNAME];
 
         if (!components[INDEX_PHONE].matches(regexPhone)) {
-            throw new IllegalArgumentException("WRONG PHONE!!!!");
+            throw new CustomerAddException("WRONG format PHONE!!!!");
         }
         if (!components[INDEX_EMAIL].matches(regexMail)) {
-            throw new IllegalArgumentException("WRONG EMAIL!!!!");
+            throw new CustomerAddException("WRONG format EMAIL!!!");
         }
         storage.put(name, new Customer(name, components[INDEX_PHONE], components[INDEX_EMAIL]));
     }
@@ -37,8 +36,16 @@ public class CustomerStorage {
         storage.values().forEach(System.out::println);
     }
 
-    public void removeCustomer(String name) {
-        storage.remove(name);
+    public void removeCustomer(String name) throws RemoveCustomerException {
+        try {
+            if (storage.get(name).getName().equals(name)) {
+                storage.remove(name);
+            }
+        }
+        catch (NullPointerException exception){
+            throw new RemoveCustomerException("Пользователя с таким именем не найдено!");
+        }
+
     }
 
     public Customer getCustomer(String name) {
