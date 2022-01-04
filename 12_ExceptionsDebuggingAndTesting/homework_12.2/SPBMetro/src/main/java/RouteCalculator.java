@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Set;
 
 public class RouteCalculator {
-    private final StationIndex stationIndex;
+    public static StationIndex stationIndex;
 
     private static final double INTER_STATION_DURATION = 2.5;
     private static final double INTER_CONNECTION_DURATION = 3.5;
 
-    public RouteCalculator(StationIndex stationIndex) {
-        this.stationIndex = stationIndex;
+    public RouteCalculator(StationIndex stationIndexx) {
+        stationIndex = stationIndexx;
     }
 
     public List<Station> getShortestRoute(Station from, Station to) {
@@ -100,8 +100,8 @@ public class RouteCalculator {
         return route;
     }
 
-    private boolean isConnected(Station station1, Station station2) {
-        Set<Station> connected = stationIndex.getConnectedStations(station1);
+    public static boolean isConnected(Station station1, Station station2) {
+        Set<Station> connected =  stationIndex.getConnectedStations(station1);
         return connected.contains(station2);
     }
 
