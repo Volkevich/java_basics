@@ -46,7 +46,7 @@ public class RouteCalculatorTest extends TestCase {
         //TODO:Станции
         altaiskay = new Station("Алтайская", blueLine);
         pushkinskaya = new Station("Пушкинская", redLine);
-        zimnya = new Station("Зимняя", greenLine);
+        zimnya = new Station("Зимняя", blueLine);
         summer = new Station("Летняя", greenLine);
         Station sun = new Station("Солнечная", redLine);
         Station redgor = new Station("Красногорская", redLine);
@@ -69,7 +69,7 @@ public class RouteCalculatorTest extends TestCase {
 
         routeCalculator = new RouteCalculator(stationIndex);
 
-        TransferRoute = Stream.of(altaiskay,sun,zimnya).collect(Collectors.toList());
+        TransferRoute = Stream.of(altaiskay,zimnya).collect(Collectors.toList());
 
     }
 
