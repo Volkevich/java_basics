@@ -17,17 +17,20 @@ public class RouteCalculator {
 
     public List<Station> getShortestRoute(Station from, Station to) {
         List<Station> route = getRouteOnTheLine(from, to);
+
         if (route != null) {
             return route;
         }
 
         route = getRouteWithOneConnection(from, to);
-        if (route != null) {
+        if (route != null && route.size() !=0) {
             return route;
         }
 
         route = getRouteWithTwoConnections(from, to);
-        return route;
+
+            return route;
+
     }
 
     public static double calculateDuration(List<Station> route) {
@@ -135,7 +138,7 @@ public class RouteCalculator {
                 if (connectedLineRoute == null) {
                     continue;
                 }
-                List<Station> way = new ArrayList<>();
+                ArrayList<Station> way = new ArrayList<>();
                 way.addAll(getRouteOnTheLine(from, srcStation));
                 way.addAll(connectedLineRoute);
                 way.addAll(getRouteOnTheLine(dstStation, to));
