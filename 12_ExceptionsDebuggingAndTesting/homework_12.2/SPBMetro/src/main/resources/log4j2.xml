@@ -5,17 +5,17 @@
       <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
     </Console>
 
-    <File name="Exception" fileName="logs/Exception.log">
+    <File name="Exception" fileName="C:/Users/Vinde/IdeaProjects/java_basics/12_ExceptionsDebuggingAndTesting/homework_12.2/SPBMetro/src/main/java/logs/Exception.log">
       <MarkerFilter marker="Exception" onMatch="ACCEPT" onMismatch="DENY"/>
-      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{} - %msg%n"/>
     </File>
-    <File name="SearchStations" fileName="logs/SearchStation.log">
+    <File name="SearchStations" fileName="C:/Users/Vinde/IdeaProjects/java_basics/12_ExceptionsDebuggingAndTesting/homework_12.2/SPBMetro/src/main/java/logs/SearchStation.log">
       <MarkerFilter marker="Search" onMatch="ACCEPT" onMismatch="DENY"/>
-      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{} -  %msg%n"/>
     </File>
-    <File name="NotFound" fileName="logs/NotFoundStations.log">
+    <File name="NotFound" fileName="C:/Users/Vinde/IdeaProjects/java_basics/12_ExceptionsDebuggingAndTesting/homework_12.2/SPBMetro/src/main/java/logs/NotFoundStations.log">
       <MarkerFilter marker="NoFound" onMatch="ACCEPT" onMismatch="DENY"/>
-      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{} - %msg%n"/>
     </File>
   </appenders>
 
